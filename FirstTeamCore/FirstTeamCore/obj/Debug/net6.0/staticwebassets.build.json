@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "62eTrpvBLflYFJ8cRsQouLySNuvkjd0Vf1NHWYwgOuQ=",
+  "Hash": "VVP/OWTMoyTp82OaxzrNTa8gjJMHAsGOvs6+STsIR+o=",
   "Source": "prjCoreFT",
   "BasePath": "_content/prjCoreFT",
   "Mode": "Default",
@@ -102,12 +102,12 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\card.jpg"
     },
     {
-      "Identity": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\assets\\img\\favicon.png",
+      "Identity": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\assets\\img\\faicon.png",
       "SourceId": "prjCoreFT",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\",
       "BasePath": "_content/prjCoreFT",
-      "RelativePath": "assets/img/favicon.png",
+      "RelativePath": "assets/img/faicon.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -116,7 +116,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\img\\favicon.png"
+      "OriginalItemSpec": "wwwroot\\assets\\img\\faicon.png"
     },
     {
       "Identity": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\assets\\img\\messages-1.jpg",
@@ -440,6 +440,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\y.png"
+    },
+    {
+      "Identity": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\assets\\img\\ye.png",
+      "SourceId": "prjCoreFT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\",
+      "BasePath": "_content/prjCoreFT",
+      "RelativePath": "assets/img/ye.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\ye.png"
+    },
+    {
+      "Identity": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\assets\\img\\yel.png",
+      "SourceId": "prjCoreFT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\",
+      "BasePath": "_content/prjCoreFT",
+      "RelativePath": "assets/img/yel.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\yel.png"
     },
     {
       "Identity": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\assets\\js\\main.js",

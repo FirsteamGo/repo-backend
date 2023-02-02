@@ -17,8 +17,8 @@
       "PackagePath": "staticwebassets\\assets\\img\\card.jpg"
     },
     {
-      "Id": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\assets\\img\\favicon.png",
-      "PackagePath": "staticwebassets\\assets\\img\\favicon.png"
+      "Id": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\assets\\img\\faicon.png",
+      "PackagePath": "staticwebassets\\assets\\img\\faicon.png"
     },
     {
       "Id": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\assets\\img\\messages-1.jpg",
@@ -95,6 +95,14 @@
     {
       "Id": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\assets\\img\\y.png",
       "PackagePath": "staticwebassets\\assets\\img\\y.png"
+    },
+    {
+      "Id": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\assets\\img\\ye.png",
+      "PackagePath": "staticwebassets\\assets\\img\\ye.png"
+    },
+    {
+      "Id": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\assets\\img\\yel.png",
+      "PackagePath": "staticwebassets\\assets\\img\\yel.png"
     },
     {
       "Id": "C:\\Full-stack\\final project\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\assets\\js\\main.js",
