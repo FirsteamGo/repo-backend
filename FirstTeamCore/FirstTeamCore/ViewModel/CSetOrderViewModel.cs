@@ -20,11 +20,11 @@ namespace prjCoreFT.ViewModel
             get { return _product.套裝訂單id; }
             set { _product.套裝訂單id = value; }
         }
-        //public int 套裝行程ID
-        //{
-        //    get { return _product.套裝行程id; }
-        //    set { _product.套裝行程id = value; }
-        //}
+        public int 套裝行程ID
+        {
+            get { return _product.套裝行程id; }
+            set { _product.套裝行程id = value; }
+        }
         public string? 套裝方案
         {
             get { return _product.套裝行程.套裝方案; }
@@ -40,11 +40,11 @@ namespace prjCoreFT.ViewModel
             get { return _product.套裝行程.餐廳.餐點細項; }
             set { _product.套裝行程.餐廳.餐點細項 = value; }
         }
-        //public int? 會員ID
-        //{
-        //    get { return _product.會員id; }
-        //    set { _product.會員id = value; }
-        //}
+        public int? 會員ID
+        {
+            get { return _product.會員id; }
+            set { _product.會員id = value; }
+        }
         public string? 會員姓名
         {
             get { return _product.會員.姓名; }

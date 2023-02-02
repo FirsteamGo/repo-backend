@@ -128,48 +128,79 @@ namespace prjCoreFT.Controllers
             }
 
 
-            //<!-- ======= End自選飲食 ======= -->
+        //<!-- ======= End自選飲食 ======= -->
 
 
 
-            //<!-- ======= 自選訂單 ======= -->
+        //<!-- ======= 自選訂單 ======= -->
 
-            public IActionResult SelfOrder(string txtKeyword)
+        public IActionResult SelfOrder(CKeywordViewModel vm)
+        {
+            IEnumerable<SelfOrder> datas = null;
+            if (string.IsNullOrEmpty(vm.txtKeyword))
             {
-                IEnumerable<SelfOrder> datas = null;
-                if (string.IsNullOrEmpty(txtKeyword))
-                {
-                    datas = from t in db.SelfOrders
-                            select t;
-                }
-                else
-                {
-                    datas = db.SelfOrders.Where(t => t.建立人.Contains(txtKeyword));
-                }
-
-                return View(datas);
+                datas = db.SelfOrders.Include(s => s.營區細項).ThenInclude(a => a.營區).Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s => s.會員).Include(s => s.自選飲食).Include(s => s.租賃商店);
             }
-
-
-
-            //訂單刪除
-            public IActionResult OrderDelete(int? id)
+            else
             {
-                if (id != null)
-                {
-
-                    SelfOrder delSelfOrder = db.SelfOrders.FirstOrDefault(t => t.自選訂單id == id);
-                    if (delSelfOrder != null)
-                    {
-                        db.SelfOrders.Remove(delSelfOrder);
-                        db.SaveChangesAsync();
-                    }
-                }
-                return RedirectToAction("SelfOrder");
+                datas = db.SelfOrders.Include(s => s.營區細項).ThenInclude(a => a.營區).Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s => s.會員).Include(s => s.自選飲食).Include(s => s.租賃商店).Where(t => t.自選訂單編號.Equals(vm.txtKeyword));
             }
-
-            //<!-- ======= End自選訂單 ======= -->
-
-
+            //var dbFT = db.SelfOrders.Include(s => s.營區細項).ThenInclude(a => a.營區).Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s => s.會員).Include(s => s.自選飲食).Include(s => s.租賃商店);
+            return View(datas);
         }
+
+        public IActionResult SelfOrderEdit(int? id)
+        {
+            if (id != null)
+            {
+
+                SelfOrder x = db.SelfOrders.FirstOrDefault(t => t.自選訂單id == id);
+                if (x != null)
+                    return View(x);
+
+            }
+            return RedirectToAction("SelfOrder"); //刪除後回傳給List
+        }
+        [HttpPost]
+        //存入資料庫
+        public IActionResult SelfOrderEdit(InputViewModel.CSelfOrderViewModelInput p)  //使用CSelfFoodViewModel
+        {
+
+            SelfOrder x = db.SelfOrders.FirstOrDefault(t => t.自選訂單id == p.自選訂單id);
+            if (x != null)
+            {
+                x.入住時間 = p.入住時間;
+                x.退住時間 = p.退住時間;
+                x.露營天數 = p.露營天數;
+                x.預計人數 = p.預計人數;
+                x.租借總價 = p.租借總價;
+                x.自選訂單總價 = p.自選訂單總價;
+                x.評論 = p.評論;
+                x.評分 = p.評分;
+
+                db.SaveChangesAsync();
+            }
+            return RedirectToAction("SelfOrder");
+        }
+
+        //訂單刪除
+        public IActionResult OrderDelete(int? id)
+        {
+            if (id != null)
+            {
+
+                SelfOrder delSelfOrder = db.SelfOrders.FirstOrDefault(t => t.自選訂單id == id);
+                if (delSelfOrder != null)
+                {
+                    db.SelfOrders.Remove(delSelfOrder);
+                    db.SaveChangesAsync();
+                }
+            }
+            return RedirectToAction("SelfOrder");
+        }
+
+        //<!-- ======= End自選訂單 ======= -->
+
+
+    }
     }
