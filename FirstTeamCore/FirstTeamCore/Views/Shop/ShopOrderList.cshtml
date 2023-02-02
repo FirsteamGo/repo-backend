@@ -5,6 +5,16 @@
 }
 
 <h1>訂單總覽</h1>
+<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item active">露營商店</li>
+            <li class="breadcrumb-item active">訂單總覽</li>
+        </ol>
+    </nav>
+</div>
+
 @using (Html.BeginForm())
 {
     <p>
@@ -104,7 +114,7 @@
                 @Html.DisplayFor(modelItem => item.修改時間)
             </td>*@
             <td>
-                        @Html.ActionLink("修改", "ShopOrderEdit", new { id=item.商店id }, new { @class="btn btn-success" }) |@Html.ActionLink("刪除", "OrderDelete","Shop", new { id=item.商店id },new{onclick="return confirm('確定要刪除嗎?')"})
+                        @Html.ActionLink("修改", "ShopOrderEdit", new { id=item.商店id }, new { @class="btn btn-success" }) |@Html.ActionLink("刪除", "OrderDelete","Shop", new { id=item.商店id },new{onclick="return confirm('確定要刪除嗎?')",@class="btn btn-danger"})
             </td>
         </tr>
 }}

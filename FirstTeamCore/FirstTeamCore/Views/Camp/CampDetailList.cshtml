@@ -51,7 +51,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.單價)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.建立人)
             </th>
             <th>
@@ -62,7 +62,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.修改時間)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -88,12 +88,12 @@
                 @Html.DisplayFor(modelItem => item.詳細內容)
             </td>
             <td>
-                <img src="~/images/@item.圖片 " width="80" height="50" />
+                <img src="~/images/@item.圖片 " width="100" height="80" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.單價)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.建立人)
             </td>
             <td>
@@ -104,7 +104,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.修改時間)
-            </td>
+            </td>*@
             <td>
                 @Html.ActionLink("修改", "CampDetailEdit", new {  id=item.營區細項id },new{@class="btn btn-success"})|
                 @Html.ActionLink("刪除", "CampDetailDelete", new { id=item.營區細項id},new { onclick = "return confirm('確定要刪除嗎?')",@class="btn btn-danger" })

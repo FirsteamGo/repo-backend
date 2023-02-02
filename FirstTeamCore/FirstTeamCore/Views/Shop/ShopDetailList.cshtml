@@ -5,6 +5,17 @@
 }
 
 <h1>野麓 | Store</h1>
+
+<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item active">露營商店</li>
+            <li class="breadcrumb-item active">訂單細項</li>
+        </ol>
+    </nav>
+</div>
+
 @using (Html.BeginForm())
 {
     <p>
@@ -41,7 +52,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.單價)
             </th>
-            <th>
+           @* <th>
                 @Html.DisplayNameFor(model => model.建立人)
             </th>
             <th>
@@ -52,7 +63,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.修改時間)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -82,7 +93,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.單價)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.建立人)
             </td>
             <td>
@@ -93,10 +104,10 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.修改時間)
-            </td>
+            </td>*@
             <td>
-               @Html.ActionLink("修改", "ShopDetailEdit", new {  id=item.商品細項id  })
-               @Html.ActionLink("刪除", "Delete", new { id=item.商品細項id },new{onclick="return confirm('確定要刪除嗎?')"})
+                        @Html.ActionLink("修改", "ShopDetailEdit", new {  id=item.商品細項id  }, new { @class="btn btn-success" })
+                        @Html.ActionLink("刪除", "Delete", new { id=item.商品細項id },new{onclick="return confirm('確定要刪除嗎?')",@class="btn btn-danger"})
             </td>
         </tr>
 }}

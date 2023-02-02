@@ -4,7 +4,7 @@
     ViewData["Title"] = "CampList";
 }
 
-<h1>營區管理</h1>
+<h1>營區總覽</h1>
 
 <div class="pagetitle">
     <nav>
@@ -51,7 +51,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.容納人數)
             </th>
-            <th>
+           @* <th>
                 @Html.DisplayNameFor(model => model.建立人)
             </th>
             <th>
@@ -62,7 +62,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.修改時間)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -92,7 +92,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.容納人數)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.建立人)
             </td>
             <td>
@@ -103,7 +103,7 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.修改時間)
-            </td>
+            </td>*@
             <td>
                 @Html.ActionLink("編輯", "CampEdit", new {  id=item.營區id },new{@class="btn btn-success"})|
                 @Html.ActionLink("刪除", "Delete","Camp", new { id = item.營區id },

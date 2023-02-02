@@ -4,7 +4,18 @@
     ViewData["Title"] = "List";
 }
 
-<h1>List</h1>
+<h1>會員資料總覽</h1>
+<!-- 上方索引層 -->
+<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item active">會員中心</li>
+            <li class="breadcrumb-item active">會員資料總覽</li>
+        </ol>
+    </nav>
+</div>
+<!-- 索引層end -->
 
 @*關鍵字查詢頁面*@
 @using (Html.BeginForm())
