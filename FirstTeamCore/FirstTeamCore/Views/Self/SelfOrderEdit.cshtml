@@ -1,0 +1,120 @@
+﻿@model prjCoreFT.Models.SelfOrder
+
+@{
+    ViewData["Title"] = "SelfOrderEdit";
+}
+
+<h1>自選訂單修改</h1>
+
+<h4>自選訂單</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SelfOrderEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="自選訂單id" class="control-label"></label>
+                <input asp-for="自選訂單id" class="form-control" />
+                <span asp-validation-for="自選訂單id" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="會員id" class="control-label"></label>
+            <input asp-for="會員id" class="form-control" />
+            <span asp-validation-for="會員id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="自選訂單編號" class="control-label"></label>
+            <input asp-for="自選訂單編號" class="form-control" />
+            <span asp-validation-for="自選訂單編號" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="入住時間" class="control-label"></label>
+                <input asp-for="入住時間" class="form-control" />
+                <span asp-validation-for="入住時間" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="退住時間" class="control-label"></label>
+                <input asp-for="退住時間" class="form-control" />
+                <span asp-validation-for="退住時間" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="露營天數" class="control-label"></label>
+                <input asp-for="露營天數" class="form-control" />
+                <span asp-validation-for="露營天數" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="預計人數" class="control-label"></label>
+                <input asp-for="預計人數" class="form-control" />
+                <span asp-validation-for="預計人數" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="營區細項id" class="control-label"></label>
+            <input asp-for="營區細項id" class="form-control" />
+            <span asp-validation-for="營區細項id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="自選飲食id" class="control-label"></label>
+            <input asp-for="自選飲食id" class="form-control" />
+            <span asp-validation-for="自選飲食id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="租賃商店id" class="control-label"></label>
+            <input asp-for="租賃商店id" class="form-control" />
+            <span asp-validation-for="租賃商店id" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="租借總價" class="control-label"></label>
+                <input asp-for="租借總價" class="form-control" />
+                <span asp-validation-for="租借總價" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="自選訂單總價" class="control-label"></label>
+                <input asp-for="自選訂單總價" class="form-control" />
+                <span asp-validation-for="自選訂單總價" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="評論" class="control-label"></label>
+                <input asp-for="評論" class="form-control" />
+                <span asp-validation-for="評論" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="評分" class="control-label"></label>
+                <input asp-for="評分" class="form-control" />
+                <span asp-validation-for="評分" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="建立人" class="control-label"></label>
+            <input asp-for="建立人" class="form-control" />
+            <span asp-validation-for="建立人" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="建立時間" class="control-label"></label>
+            <input asp-for="建立時間" class="form-control" />
+            <span asp-validation-for="建立時間" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="修改人" class="control-label"></label>
+            <input asp-for="修改人" class="form-control" />
+            <span asp-validation-for="修改人" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="修改時間" class="control-label"></label>
+            <input asp-for="修改時間" class="form-control" />
+            <span asp-validation-for="修改時間" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="修改儲存" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="SelfOrder">返回自選訂單表單</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

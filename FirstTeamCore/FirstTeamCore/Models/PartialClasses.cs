@@ -13,4 +13,19 @@ namespace prjCoreFT.Models
     public partial class CLogin
     {
     }
+
+    [ModelMetadataTypeAttribute(typeof(SelfOrderMetadata))]
+    public partial class SelfOrder
+    {
+    }
+
+    [ModelMetadataTypeAttribute(typeof(SelfFoodMetadata))]
+    public partial class SelfFood
+    {
+    }
+
+    [ModelMetadataTypeAttribute(typeof(RentDetailMetadata))]
+    public partial class RentDetail
+    {
+    }
 }

@@ -20,11 +20,11 @@ namespace prjCoreFT.ViewModel
             get { return _product.套裝行程id; }
             set { _product.套裝行程id = value; }
         }
-        //public int? 營地ID
-        //{
-        //    get { return _product.營地id; }
-        //    set { _product.營地id = value; }
-        //}
+        public int? 營地ID
+        {
+            get { return _product.營地id; }
+            set { _product.營地id = value; }
+        }
         public string? 營區名稱
         {
             get { return _product.營地.營區名稱; }

@@ -1,6 +1,7 @@
 ﻿using prjCoreFT.Models;
 using prjCoreFT.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace prjCoreFT.Controllers
 {
@@ -105,15 +106,16 @@ namespace prjCoreFT.Controllers
             IEnumerable<SetOrder> datas = null;
             if (string.IsNullOrEmpty(vm.txtKeyword))
             {
-                datas = from t in db.SetOrders
-                        select t;
+                datas = db.SetOrders.Include(s => s.套裝行程).ThenInclude(a => a.餐廳).Include(s => s.會員);
             }
             else
             {
-                datas = db.SetOrders.Where(t => t.評分.Equals(vm.txtKeyword) ||
+                datas = db.SetOrders.Include(s => s.套裝行程).ThenInclude(a => a.餐廳).Include(s => s.會員).Where(t => t.評分.Equals(vm.txtKeyword) ||
                 t.評論.Contains(vm.txtKeyword) || t.合計總價.Equals(vm.txtKeyword) || t.入住時間.Equals(vm.txtKeyword) || t.退住時間.Equals(vm.txtKeyword) || t.預計人數.Equals(vm.txtKeyword));
             }
-            return View(datas);
+            //var dbFT = db.SetOrders.Include(s => s.套裝行程).ThenInclude(a => a.餐廳).Include(s => s.會員);
+            return View(datas.ToList());
+
         }
         public IActionResult SetOrderCreate()
         {
@@ -160,14 +162,14 @@ namespace prjCoreFT.Controllers
         }
         [HttpPost]
         //存入資料庫
-        public IActionResult SetOrderEdit(CSetOrderViewModel p)  //使用CSelfFoodViewModel
+        public IActionResult SetOrderEdit(InputViewModel.CSetOrderInput p)  //使用CSelfFoodViewModel
         {
 
-            SetOrder x = db.SetOrders.FirstOrDefault(t => t.套裝訂單id == p.套裝訂單ID);
+            SetOrder x = db.SetOrders.FirstOrDefault(t => t.套裝訂單id == p.套裝訂單id);
             if (x != null)
             {
                 x.入住時間 = p.入住時間;
-                x.退住時間 = p.退住時間;              
+                x.退住時間 = p.退住時間;
                 x.合計總價 = p.合計總價;
                 x.評論 = p.評論;
                 x.評論 = p.評論;
@@ -180,24 +182,29 @@ namespace prjCoreFT.Controllers
         //---------------訂單---------------        
         public IActionResult SetDetail(CKeywordViewModel vm)
         {
+
             IEnumerable<SetOrderDetail> datas = null;
             if (string.IsNullOrEmpty(vm.txtKeyword))
             {
-                datas = from t in db.SetOrderDetails
-                        select t;
+                datas = db.SetOrderDetails.Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s => s.營地).Include(s => s.餐廳);
             }
             else
             {
-                datas = db.SetOrderDetails.Where(t => t.套裝方案.Contains(vm.txtKeyword) ||
-                t.套裝細項.Contains(vm.txtKeyword) || t.套裝行程價格.Equals(vm.txtKeyword));
+                datas = db.SetOrderDetails.Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s => s.營地).Include(s => s.餐廳).Where(t => t.套裝方案.Contains(vm.txtKeyword) || t.套裝細項.Contains(vm.txtKeyword) || t.套裝行程價格.Equals(vm.txtKeyword));
             }
-            return View(datas);
+            return View(datas.ToList());
+
+
+            //var dbFTContext = db.SetOrderDetails.Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s => s.營地).Include(s => s.餐廳).Where(t => t.套裝方案.Contains(vm.txtKeyword) || t.套裝細項.Contains(vm.txtKeyword) || t.套裝行程價格.Equals(vm.txtKeyword));
+            //return View(dbFTContext.ToList());
+
         }
         public IActionResult SetOrderDetailCreate()
         {
             return View();
         }
         [HttpPost]
+
         public IActionResult SetOrderDetailCreate(SetOrderDetail p)
         {
 
@@ -238,7 +245,7 @@ namespace prjCoreFT.Controllers
         }
         [HttpPost]
         //存入資料庫
-        public IActionResult SetOrderDetailEdit(CSetOrderDetailViewModel p)
+        public IActionResult SetOrderDetailEdit(InputViewModel.CSetOrderDetailInput p)
         {
 
             SetOrderDetail x = db.SetOrderDetails.FirstOrDefault(t => t.套裝行程id == p.套裝行程ID);
