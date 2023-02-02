@@ -48,12 +48,9 @@ namespace prjCoreFT.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(MemberInfo p, IFormFile photo)
+        public IActionResult Create(MemberInfo p, IFormFile photo)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(p);
-            }
+            
             //dbDemoContext db = new dbDemoContext();
             if (photo != null)
             {

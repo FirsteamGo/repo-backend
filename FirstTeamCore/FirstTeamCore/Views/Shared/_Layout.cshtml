@@ -12,7 +12,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="~/assets/img/favicon.png" rel="icon">
+    <link href="~/assets/img/faicon.png" width="200" height="200" rel="icon">
     <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -43,11 +43,11 @@
 
 <body>
         <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top d-flex align-items-center">
+    <header id="header" class="header fixed-top d-flex align-items-center ">
 
-        <div class="d-flex align-items-center justify-content-between">
-            <a asp-controller="Home" asp-action="Index" class="logo d-flex align-items-center">
-                <img src="~/assets/img/y.png" alt="">
+        <div class="d-flex align-items-center justify-content-between  ">
+            <a asp-controller="Home" asp-action="Index" class=" d-flex align-items-center logo ">
+                <img src="~/assets/img/yel.png"    alt="" class=""  >
                 <span class="d-none d-lg-block">野麓Yelu Glamping</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -380,6 +380,10 @@
 
     <!-- Template Main JS File -->
     <script src="~/assets/js/main.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
 
     @await RenderSectionAsync("scripts",required:false)
 </body>
