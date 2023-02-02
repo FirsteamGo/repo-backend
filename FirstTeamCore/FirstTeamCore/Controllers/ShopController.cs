@@ -1,6 +1,7 @@
 ﻿using prjCoreFT.Models;
 using prjCoreFT.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace prjCoreFT.Controllers
 {
@@ -18,14 +19,43 @@ namespace prjCoreFT.Controllers
             IEnumerable<ShopOrder> datas = null;
 
             if (string.IsNullOrEmpty(txtKeyword))
+                //datas = db.ShopOrders.Include(s => s.商品細項).Include(s => s.會員);
                 datas = from t in db.ShopOrders
                         select t;
             else
-                datas = db.ShopOrders.Where(t => t.細項.Contains(txtKeyword) || t.購物評價.Contains(txtKeyword));
+                //datas = db.ShopOrders.Include(s => s.商品細項).Include(s => s.會員).Where(t => t.細項.Contains(txtKeyword) || t.購物評價.Contains(txtKeyword));
+            datas = db.ShopOrders.Where(t => t.細項.Contains(txtKeyword) || t.購物評價.Contains(txtKeyword));
 
             return View(datas);
+           
         }
+        public IActionResult ShopOrderEdit(int? id)
+        {
+            if (id != null)
+            {
 
+                ShopOrder x = db.ShopOrders.FirstOrDefault(t => t.商店id == id);
+                if (x != null)
+                    return View(x);
+
+            }
+            return RedirectToAction("ShopOrderList"); //刪除後回傳給List
+        }
+        [HttpPost]
+        //存入資料庫
+        public IActionResult ShopOrderEdit(InputViewModel.CShopOrderViewInput p)  //使用CSelfFoodViewModel
+        {
+
+            ShopOrder x = db.ShopOrders.FirstOrDefault(t => t.商店id == p.商店id);
+            if (x != null)
+            {
+                x.細項 = p.細項;
+                x.總價 = p.總價;
+                x.購物評價 = p.購物評價;
+                db.SaveChangesAsync();
+            }
+            return RedirectToAction("ShopOrderList");
+        }
         public IActionResult OrderDelete(int? id)
         {
             if (id != null)

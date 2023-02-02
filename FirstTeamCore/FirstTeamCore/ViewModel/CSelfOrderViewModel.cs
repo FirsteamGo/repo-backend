@@ -46,7 +46,11 @@ namespace FirstTeamCore.ViewModel
             get { return _product.自選訂單編號; }
             set { _product.自選訂單編號 = value; }
         }
-
+        public string? 項目內容
+        {
+            get { return _product.營區細項.露營形式.項目內容; }
+            set { _product.營區細項.露營形式.項目內容 = value; }
+        }
         public DateTime? 入住時間
         {
             get { return _product.入住時間; }

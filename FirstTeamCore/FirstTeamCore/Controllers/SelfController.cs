@@ -139,11 +139,11 @@ namespace prjCoreFT.Controllers
             IEnumerable<SelfOrder> datas = null;
             if (string.IsNullOrEmpty(vm.txtKeyword))
             {
-                datas = db.SelfOrders.Include(s => s.營區細項).ThenInclude(a => a.營區).Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s => s.會員).Include(s => s.自選飲食).Include(s => s.租賃商店);
+                datas = db.SelfOrders.Include(s => s.營區細項).ThenInclude(a => a.營區).Include(s => s.營區細項).ThenInclude(a => a.露營形式).Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s => s.會員).Include(s => s.自選飲食).Include(s => s.租賃商店);
             }
             else
             {
-                datas = db.SelfOrders.Include(s => s.營區細項).ThenInclude(a => a.營區).Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s => s.會員).Include(s => s.自選飲食).Include(s => s.租賃商店).Where(t => t.自選訂單編號.Equals(vm.txtKeyword));
+                datas = db.SelfOrders.Include(s => s.營區細項).ThenInclude(a => a.營區).Include(s => s.營區細項).ThenInclude(a => a.露營形式).Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s => s.會員).Include(s => s.自選飲食).Include(s => s.租賃商店).Where(t => t.自選訂單編號.Equals(vm.txtKeyword));
             }
             //var dbFT = db.SelfOrders.Include(s => s.營區細項).ThenInclude(a => a.營區).Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s => s.會員).Include(s => s.自選飲食).Include(s => s.租賃商店);
             return View(datas);

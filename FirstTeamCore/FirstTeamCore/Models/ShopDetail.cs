@@ -4,13 +4,17 @@ using System.Collections.Generic;
 namespace prjCoreFT.Models
 {
     public partial class ShopDetail
-    {
+    {        
+        
         public ShopDetail()
         {
             ShopOrders = new HashSet<ShopOrder>();
         }
 
+        public int 商店id { get; set; }
         public int 商品細項id { get; set; }
+        
+        public string? 會員名稱 { get; set; }
         public string? 品牌名稱 { get; set; }
         public string? 產品名稱 { get; set; }
         public string? 產品說明 { get; set; }

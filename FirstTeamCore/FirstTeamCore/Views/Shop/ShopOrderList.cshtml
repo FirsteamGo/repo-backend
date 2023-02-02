@@ -21,10 +21,10 @@
                 序
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.商品細項id)
+                @Html.DisplayNameFor(model => model.商品細項.產品名稱)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.會員id)
+                @Html.DisplayNameFor(model => model.會員.姓名)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.商店訂單編號)
@@ -44,7 +44,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.購物評分)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.建立人)
             </th>
             <th>
@@ -55,7 +55,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.修改時間)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -68,10 +68,10 @@
                 @count
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.商品細項id)
+                @Html.DisplayFor(modelItem => item.商品細項.產品名稱)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.會員id)
+                @Html.DisplayFor(modelItem => item.會員.姓名)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.商店訂單編號)
@@ -91,7 +91,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.購物評分)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.建立人)
             </td>
             <td>
@@ -102,9 +102,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.修改時間)
-            </td>
+            </td>*@
             <td>
-                        @Html.ActionLink("刪除", "OrderDelete","Shop", new { id=item.商店id },new{onclick="return confirm('確定要刪除嗎?')"})
+                        @Html.ActionLink("修改", "ShopOrderEdit", new { id=item.商店id }, new { @class="btn btn-success" }) |@Html.ActionLink("刪除", "OrderDelete","Shop", new { id=item.商店id },new{onclick="return confirm('確定要刪除嗎?')"})
             </td>
         </tr>
 }}

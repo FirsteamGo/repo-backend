@@ -186,11 +186,11 @@ namespace prjCoreFT.Controllers
             IEnumerable<SetOrderDetail> datas = null;
             if (string.IsNullOrEmpty(vm.txtKeyword))
             {
-                datas = db.SetOrderDetails.Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s => s.營地).Include(s => s.餐廳);
+                datas = db.SetOrderDetails.Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s=>s.營區細項).ThenInclude(a=>a.露營形式).Include(s => s.營地).Include(s => s.餐廳);
             }
             else
             {
-                datas = db.SetOrderDetails.Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s => s.營地).Include(s => s.餐廳).Where(t => t.套裝方案.Contains(vm.txtKeyword) || t.套裝細項.Contains(vm.txtKeyword) || t.套裝行程價格.Equals(vm.txtKeyword));
+                datas = db.SetOrderDetails.Include(s => s.營區細項).ThenInclude(a => a.活動).Include(s => s.營區細項).ThenInclude(a => a.露營形式).Include(s => s.營地).Include(s => s.餐廳).Where(t => t.套裝方案.Contains(vm.txtKeyword) || t.套裝細項.Contains(vm.txtKeyword) || t.套裝行程價格.Equals(vm.txtKeyword));
             }
             return View(datas.ToList());
 

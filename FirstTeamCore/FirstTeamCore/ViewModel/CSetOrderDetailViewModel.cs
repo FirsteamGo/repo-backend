@@ -35,6 +35,11 @@ namespace prjCoreFT.ViewModel
             get { return _product.營區細項id; }
             set { _product.營區細項id = value; }
         }
+        public string? 項目內容 
+        {
+            get { return _product.營區細項.露營形式.項目內容; }
+            set { _product.營區細項.露營形式.項目內容 = value; }
+        }
         public string? 活動名稱
         {
             get { return _product.營區細項.活動.活動名稱; }

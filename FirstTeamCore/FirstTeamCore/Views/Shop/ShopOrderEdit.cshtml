@@ -1,0 +1,94 @@
+﻿@model prjCoreFT.Models.ShopOrder
+
+@{
+    ViewData["Title"] = "ShopOrderEdit";
+}
+
+<h1>商店訂單修改</h1>
+
+<h4>商店訂單</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ShopOrderEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="商店id" class="control-label"></label>
+                <input asp-for="商店id" class="form-control" />
+                <span asp-validation-for="商店id" class="text-danger"></span>
+            </div>*@
+            <input type="hidden" name="商店id" value="@Model.商店id" />
+            @*<div class="form-group">
+                <label asp-for="商品細項id" class="control-label"></label>
+                <input asp-for="商品細項id" class="form-control" />
+                <span asp-validation-for="商品細項id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="會員id" class="control-label"></label>
+                <input asp-for="會員id" class="form-control" />
+                <span asp-validation-for="會員id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="商店訂單編號" class="control-label"></label>
+                <input asp-for="商店訂單編號" class="form-control" />
+                <span asp-validation-for="商店訂單編號" class="text-danger"></span>
+            </div>*@
+           @* <div class="form-group">
+                <label asp-for="成立時間" class="control-label"></label>
+                <input asp-for="成立時間" class="form-control" />
+                <span asp-validation-for="成立時間" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="細項" class="control-label"></label>
+                <input asp-for="細項" class="form-control" />
+                <span asp-validation-for="細項" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="總價" class="control-label"></label>
+                <input asp-for="總價" class="form-control" />
+                <span asp-validation-for="總價" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="購物評價" class="control-label"></label>
+                <input asp-for="購物評價" class="form-control" />
+                <span asp-validation-for="購物評價" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="購物評分" class="control-label"></label>
+                <input asp-for="購物評分" class="form-control" />
+                <span asp-validation-for="購物評分" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="建立人" class="control-label"></label>
+                <input asp-for="建立人" class="form-control" />
+                <span asp-validation-for="建立人" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="建立時間" class="control-label"></label>
+                <input asp-for="建立時間" class="form-control" />
+                <span asp-validation-for="建立時間" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="修改人" class="control-label"></label>
+                <input asp-for="修改人" class="form-control" />
+                <span asp-validation-for="修改人" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="修改時間" class="control-label"></label>
+                <input asp-for="修改時間" class="form-control" />
+                <span asp-validation-for="修改時間" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="修改儲存" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ShopOrderList">返回商店表單</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
