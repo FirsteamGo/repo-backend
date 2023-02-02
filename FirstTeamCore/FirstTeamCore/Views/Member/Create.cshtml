@@ -1,0 +1,128 @@
+﻿@model prjCoreFT.Models.MemberInfo
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>MemberInfo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="姓名" class="control-label"></label>
+                <input asp-for="姓名" class="form-control" />
+                <span asp-validation-for="姓名" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="性別" class="control-label"></label>
+                <input asp-for="性別" class="form-control" id="CustomerGenderInput" hidden />
+                <select id="CustomerGenderSelected" name="性別" class="form-select">
+                    <optgroup label="請選擇生理性別">
+                        <option selected disabled hidden>請選擇生理性別</option>
+                        <option value="true">男</option>
+                        <option value="false">女</option>
+                    </optgroup>
+                </select>
+                <span asp-validation-for="性別" class="text-danger"></span>
+            </div>
+
+            
+            @*<div class="form-group">
+                <label asp-for="性別" class="control-label"></label>
+                <input asp-for="性別" class="form-control" id="CustomerGenderInput" hidden />
+                <select id="CustomerGenderSelected" name="CustomerGender" class="form-select">
+                    <optgroup label="請選擇生理性別">
+                    <option selected disabled hidden>請選擇生理性別</option>
+                    <option value="M">男</option>
+                    <option value="F">女</option>
+                    </optgroup>
+                </select>
+                <span asp-validation-for="性別" class="text-danger"></span>                
+            </div>*@
+
+
+
+
+            <div class="form-group">
+                <label asp-for="出生日期" class="control-label"></label>
+                <input asp-for="出生日期" class="form-control" />
+                <span asp-validation-for="出生日期" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="電話號碼" class="control-label"></label>
+                <input asp-for="電話號碼" class="form-control" />
+                <span asp-validation-for="電話號碼" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="連絡信箱" class="control-label"></label>
+                <input asp-for="連絡信箱" class="form-control" />
+                <span asp-validation-for="連絡信箱" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="會員帳號" class="control-label"></label>
+                <input asp-for="會員帳號" class="form-control" />
+                <span asp-validation-for="會員帳號" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="會員密碼" class="control-label"></label>
+                <input asp-for="會員密碼" class="form-control" />
+                <span asp-validation-for="會員密碼" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label class="control-label">照片</label>
+                <input type="file" class="form-control" name="photo" />
+            </div>
+
+           @* <div class="form-group">
+                <label asp-for="權限" class="control-label"></label>
+                <input asp-for="權限" class="form-control" />
+                <span asp-validation-for="權限" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="建立時間" class="control-label"></label>
+                <input asp-for="建立時間" class="form-control" />
+                <span asp-validation-for="建立時間" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="修改時間" class="control-label"></label>
+                <input asp-for="修改時間" class="form-control" />
+                <span asp-validation-for="修改時間" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="修改人" class="control-label"></label>
+                <input asp-for="修改人" class="form-control" />
+                <span asp-validation-for="修改人" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="List">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        @* // 獲取<select id="CustomerGenderSelected">標籤*@
+        let CustomerGenderSelected = document.querySelector("#CustomerGenderSelected");
+        @* // 獲取<input asp-for="CustomerGender" class="form-control" id="CustomerGenderInput" hidden /> 標籤*@
+        let CustomerGenderInput = document.querySelector("#CustomerGenderInput");
+        CustomerGenderSelected.addEventListener("change", function () {
+        CustomerGenderInput.value = CustomerGenderSelected.value;
+        })
+    </script>
+       
+    
+}
+

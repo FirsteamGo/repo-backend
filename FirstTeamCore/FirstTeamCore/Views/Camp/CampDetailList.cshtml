@@ -1,0 +1,115 @@
+﻿@model IEnumerable<prjCoreFT.Models.CampDetail>
+
+@{
+    ViewData["Title"] = "CampDetailList";
+}
+
+<h1>營區細項</h1>
+
+<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item active">營區管理</li>
+            <li class="breadcrumb-item active">營區細項</li>
+        </ol>
+    </nav>
+</div>
+@using (Html.BeginForm())
+{
+    <p>
+        關鍵字
+        @Html.TextBox("txtKeyword")
+        <input type="submit" value="查詢" class="btn btn-secondary" />
+    </p>
+}
+
+<p>
+    <a asp-action="CampDetailCreate" class="btn btn-primary">新增細項</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                序
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.營區id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.活動id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.露營形式id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.詳細內容)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.圖片)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.單價)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.建立人)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.建立時間)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.修改人)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.修改時間)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = 0; 
+            foreach (var item in Model) {
+                count++;
+                <tr>
+            <td>
+                @count
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.營區id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.活動id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.露營形式id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.詳細內容)
+            </td>
+            <td>
+                <img src="~/images/@item.圖片 " width="80" height="50" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.單價)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.建立人)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.建立時間)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.修改人)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.修改時間)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "CampDetailEdit", new {  id=item.營區細項id },new{@class="btn btn-success"})|
+                @Html.ActionLink("刪除", "CampDetailDelete", new { id=item.營區細項id},new { onclick = "return confirm('確定要刪除嗎?')",@class="btn btn-danger" })
+            </td>
+        </tr>
+}}
+    </tbody>
+</table>

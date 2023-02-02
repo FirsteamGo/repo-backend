@@ -1,0 +1,73 @@
+﻿@model prjCoreFT.Models.SetFood
+
+@{
+    ViewData["Title"] = "FoodCreate";
+}
+
+<h1>新增套裝餐廳</h1>
+
+<h4>套裝餐廳</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="FoodCreate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="餐廳id" class="control-label"></label>
+                <input asp-for="餐廳id" class="form-control" />
+                <span asp-validation-for="餐廳id" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="餐廳名" class="control-label"></label>
+                <input asp-for="餐廳名" class="form-control" />
+                <span asp-validation-for="餐廳名" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="餐廳電話" class="control-label"></label>
+                <input asp-for="餐廳電話" class="form-control" />
+                <span asp-validation-for="餐廳電話" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="地址" class="control-label"></label>
+                <input asp-for="地址" class="form-control" />
+                <span asp-validation-for="地址" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="餐點細項" class="control-label"></label>
+                <input asp-for="餐點細項" class="form-control" />
+                <span asp-validation-for="餐點細項" class="text-danger"></span>
+            </div>
+           @* <div class="form-group">
+                <label asp-for="建立人" class="control-label"></label>
+                <input asp-for="建立人" class="form-control" />
+                <span asp-validation-for="建立人" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="建立時間" class="control-label"></label>
+                <input asp-for="建立時間" class="form-control" />
+                <span asp-validation-for="建立時間" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="修改人" class="control-label"></label>
+                <input asp-for="修改人" class="form-control" />
+                <span asp-validation-for="修改人" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="修改時間" class="control-label"></label>
+                <input asp-for="修改時間" class="form-control" />
+                <span asp-validation-for="修改時間" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="確認套裝餐廳新增" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="SetFood">返回套裝餐廳表單</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

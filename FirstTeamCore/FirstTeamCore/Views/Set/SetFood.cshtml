@@ -1,0 +1,102 @@
+﻿@model IEnumerable<prjCoreFT.Models.SetFood>
+
+@{
+    ViewData["Title"] = "SetFood";
+}
+
+<h1>套裝餐廳</h1>
+<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">首頁</a></li>
+            <li class="breadcrumb-item active">行程管理:套裝</li>
+            <li class="breadcrumb-item active">套裝餐廳</li>
+        </ol>
+    </nav>
+</div>
+@using (Html.BeginForm())
+{
+    <p>
+        關鍵字
+        @Html.TextBox("txtKeyword")
+        <input type="submit" value="查詢" class="btn btn-secondary" />
+    </p>
+}
+
+<p>
+    <a asp-action="FoodCreate">新增套裝餐廳</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                序
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.餐廳名)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.餐廳電話)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.地址)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.餐點細項)
+            </th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.建立人)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.建立時間)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.修改人)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.修改時間)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = 0;
+            foreach (var item in Model) {
+                count++;
+            <tr>
+                <td>
+                    @count
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.餐廳名)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.餐廳電話)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.地址)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.餐點細項)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.建立人)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.建立時間)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.修改人)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.修改時間)
+                </td>*@
+                <td>
+                        @Html.ActionLink("修改", "FoodEdit", new { id=item.餐廳id }, new { @class="btn btn-success" }) |
+                        @Html.ActionLink("刪除", "FoodDelete", new {id=item.餐廳id },new{onclick="return confirm('確定要刪除嗎?')",@class="btn btn-danger"})
+                </td>
+            </tr>
+}}
+    </tbody>
+</table>

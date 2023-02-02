@@ -1,0 +1,112 @@
+﻿@model IEnumerable<prjCoreFT.Models.ShopOrder>
+
+@{
+    ViewData["Title"] = "商店訂單";
+}
+
+<h1>訂單總覽</h1>
+@using (Html.BeginForm())
+{
+    <p>
+        關鍵字
+        @Html.TextBox("txtKeyword")
+        <input type="submit" value="查詢" />
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                序
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.商品細項id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.會員id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.商店訂單編號)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.成立時間)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.細項)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.總價)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.購物評價)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.購物評分)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.建立人)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.建立時間)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.修改人)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.修改時間)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = 0; foreach (var item in Model) {
+                count++;
+                <tr>
+            <td>
+                @count
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.商品細項id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.會員id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.商店訂單編號)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.成立時間)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.細項)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.總價)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.購物評價)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.購物評分)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.建立人)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.建立時間)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.修改人)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.修改時間)
+            </td>
+            <td>
+                        @Html.ActionLink("刪除", "OrderDelete","Shop", new { id=item.商店id },new{onclick="return confirm('確定要刪除嗎?')"})
+            </td>
+        </tr>
+}}
+    </tbody>
+</table>

@@ -1,0 +1,59 @@
+﻿@model prjCoreFT.Models.CampStyle
+
+@{
+    ViewData["Title"] = "CampStyleCreate";
+}
+
+<h1>新增露營型式</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CampStyleCreate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="套裝項目id" class="control-label"></label>
+                <input asp-for="套裝項目id" class="form-control" />
+                <span asp-validation-for="套裝項目id" class="text-danger"></span>
+            </div>*@
+            <input type="hidden" name="露營型式id" />
+            <div class="form-group">
+                <label asp-for="項目內容" class="control-label"></label>
+                <input asp-for="項目內容" class="form-control" />
+                <span asp-validation-for="項目內容" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="建立人" class="control-label"></label>
+                <input asp-for="建立人" class="form-control" />
+                <span asp-validation-for="建立人" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="建立時間" class="control-label"></label>
+                <input asp-for="建立時間" class="form-control" />
+                <span asp-validation-for="建立時間" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="修改人" class="control-label"></label>
+                <input asp-for="修改人" class="form-control" />
+                <span asp-validation-for="修改人" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="修改時間" class="control-label"></label>
+                <input asp-for="修改時間" class="form-control" />
+                <span asp-validation-for="修改時間" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="確認" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="CampStyleList"class="btn btn-danger">取消</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

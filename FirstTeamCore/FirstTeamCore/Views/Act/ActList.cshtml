@@ -1,0 +1,140 @@
+﻿@model IEnumerable<prjCoreFT.Models.ActDetail>
+
+@{
+    ViewData["Title"] = "ActList";
+}
+
+<h1>當地活動</h1>
+
+<!-- 上方索引層 -->
+<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item active">當地活動</li>
+            <li class="breadcrumb-item active">活動細項</li>
+        </ol>
+    </nav>
+</div>
+@using (Html.BeginForm())
+{
+    <p>
+        關鍵字
+        @Html.TextBox("txtKeyword")
+        <input type="submit" value="查詢" class="btn btn-secondary" />
+    </p>
+}
+
+<p>
+    <a asp-action="ActCreate" class="btn btn-primary">新增活動</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                序
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.營區)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.活動方式)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.活動種類)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.活動名稱)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.開始日期)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.結束日期)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.預計人數)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.活動介紹)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.門票價格)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.活動圖片)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.建立人)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.建立時間)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.修改人)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.修改時間)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = 0; foreach (var item in Model) {
+                count++;
+                <tr>
+            <td>
+                @count
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.營區)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.活動方式)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.活動種類)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.活動名稱)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.開始日期)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.結束日期)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.預計人數)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.活動介紹)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.門票價格)
+            </td>
+            <td>
+                <img src="~/images/@item.活動圖片 " width="80" height="50" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.建立人)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.建立時間)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.修改人)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.修改時間)
+            </td>
+            <td class="d-flex">
+                        @Html.ActionLink("修改", "ActEdit", new {  id=item.活動id },new{@class="btn btn-success"})|
+                @Html.ActionLink("刪除", "Delete","Act", new { id = item.活動id },
+                new { onclick = "return confirm('確定要刪除嗎?')",@class="btn btn-danger" })
+            </td>
+        </tr>
+}}
+    </tbody>
+</table>

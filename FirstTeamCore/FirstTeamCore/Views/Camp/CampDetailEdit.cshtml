@@ -1,0 +1,80 @@
+﻿@model prjCoreFT.Models.CampDetail
+
+@{
+    ViewData["Title"] = "CampDetailEdit";
+}
+
+<h1>修改營區細項</h1>
+
+<h4></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CampDetailEdit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" name="營區細項編號" value="@Model.營區細項id" />
+            </div>
+            <div class="form-group">
+                <label asp-for="營區id" class="control-label"></label>
+                <input asp-for="營區id" class="form-control" />
+                <span asp-validation-for="營區id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="活動id" class="control-label"></label>
+                <input asp-for="活動id" class="form-control" />
+                <span asp-validation-for="活動id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="露營形式id" class="control-label"></label>
+                <input asp-for="露營形式id" class="form-control" />
+                <span asp-validation-for="露營形式id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="詳細內容" class="control-label"></label>
+                <input asp-for="詳細內容" class="form-control" />
+                <span asp-validation-for="詳細內容" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">圖片</label>
+                <input type="file" class="form-control" name="photo" />
+            </div>
+            <div class="form-group">
+                <label asp-for="單價" class="control-label"></label>
+                <input asp-for="單價" class="form-control" />
+                <span asp-validation-for="單價" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="建立人" class="control-label"></label>
+                <input asp-for="建立人" class="form-control" />
+                <span asp-validation-for="建立人" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="建立時間" class="control-label"></label>
+                <input asp-for="建立時間" class="form-control" />
+                <span asp-validation-for="建立時間" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="修改人" class="control-label"></label>
+                <input asp-for="修改人" class="form-control" />
+                <span asp-validation-for="修改人" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="修改時間" class="control-label"></label>
+                <input asp-for="修改時間" class="form-control" />
+                <span asp-validation-for="修改時間" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="確認" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="CampDetailList" class="btn btn-danger">取消</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

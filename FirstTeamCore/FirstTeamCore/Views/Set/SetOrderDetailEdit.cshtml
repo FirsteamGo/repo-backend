@@ -1,0 +1,94 @@
+﻿@model prjCoreFT.Models.SetOrderDetail
+
+@{
+    ViewData["Title"] = "SetOrderDetailEdit";
+}
+
+<h1>套裝細項修改</h1>
+
+<h4>套裝細項</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SetOrderDetailEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="套裝行程id" class="control-label"></label>
+                <input asp-for="套裝行程id" class="form-control" />
+                <span asp-validation-for="套裝行程id" class="text-danger"></span>
+            </div>*@
+            <input type="hidden" name="套裝行程id" value="@Model.套裝行程id" />
+
+            @*<div class="form-group">
+                <label asp-for="營地id" class="control-label"></label>
+                <input asp-for="營地id" class="form-control" />
+                <span asp-validation-for="營地id" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label>@Html.DisplayForModel(Model.營地.營區名稱)</label>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="營區細項id" class="control-label"></label>
+                <input asp-for="營區細項id" class="form-control" />
+                <span asp-validation-for="營區細項id" class="text-danger"></span>
+            </div>*@
+           @* <div class="form-group">
+                <label>@Html.DisplayForModel(Model.營區細項.活動.活動名稱)</label>
+            </div>*@
+           @* <div class="form-group">
+                <label asp-for="餐廳id" class="control-label"></label>
+                <input asp-for="餐廳id" class="form-control" />
+                <span asp-validation-for="餐廳id" class="text-danger"></span>
+            </div>*@
+           @* <div class="form-group">
+                <label>@Html.DisplayForModel(Model.餐廳.餐廳名)</label>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="套裝方案" class="control-label"></label>
+                <input asp-for="套裝方案" class="form-control" />
+                <span asp-validation-for="套裝方案" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="套裝細項" class="control-label"></label>
+                <input asp-for="套裝細項" class="form-control" />
+                <span asp-validation-for="套裝細項" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="套裝行程價格" class="control-label"></label>
+                <input asp-for="套裝行程價格" class="form-control" />
+                <span asp-validation-for="套裝行程價格" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="建立人" class="control-label"></label>
+                <input asp-for="建立人" class="form-control" />
+                <span asp-validation-for="建立人" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="建立時間" class="control-label"></label>
+                <input asp-for="建立時間" class="form-control" />
+                <span asp-validation-for="建立時間" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="修改人" class="control-label"></label>
+                <input asp-for="修改人" class="form-control" />
+                <span asp-validation-for="修改人" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="修改時間" class="control-label"></label>
+                <input asp-for="修改時間" class="form-control" />
+                <span asp-validation-for="修改時間" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="確認修改套裝細項" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="SetOrderDetail">返回套裝細項</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

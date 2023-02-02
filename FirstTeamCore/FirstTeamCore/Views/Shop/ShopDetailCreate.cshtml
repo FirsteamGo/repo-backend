@@ -1,0 +1,80 @@
+﻿@model prjCoreFT.Models.ShopDetail
+
+@{
+    ViewData["Title"] = "ShopDetailCreate";
+}
+
+<h1>上架新商品</h1>
+
+<h4>輸入產品資料</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ShopDetailCreate" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" name="商品細項id" />
+            </div>
+            <div class="form-group">
+                <label asp-for="品牌名稱" class="control-label"></label>
+                <input asp-for="品牌名稱" class="form-control" />
+                <span asp-validation-for="品牌名稱" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="產品名稱" class="control-label"></label>
+                <input asp-for="產品名稱" class="form-control" />
+                <span asp-validation-for="產品名稱" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="產品說明" class="control-label"></label>
+                <input asp-for="產品說明" class="form-control" />
+                <span asp-validation-for="產品說明" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">產品圖片</label>
+                <input type="file" class="form-control" name="photo" />
+            </div>
+            <div class="form-group">
+                <label asp-for="庫存" class="control-label"></label>
+                <input asp-for="庫存" class="form-control" />
+                <span asp-validation-for="庫存" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="單價" class="control-label"></label>
+                <input asp-for="單價" class="form-control" />
+                <span asp-validation-for="單價" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="建立人" class="control-label"></label>
+                <input asp-for="建立人" class="form-control" />
+                <span asp-validation-for="建立人" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="建立時間" class="control-label"></label>
+                <input asp-for="建立時間" class="form-control" />
+                <span asp-validation-for="建立時間" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="修改人" class="control-label"></label>
+                <input asp-for="修改人" class="form-control" />
+                <span asp-validation-for="修改人" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="修改時間" class="control-label"></label>
+                <input asp-for="修改時間" class="form-control" />
+                <span asp-validation-for="修改時間" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="送出" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ShopDetailList">取消</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

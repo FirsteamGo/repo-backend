@@ -1,0 +1,65 @@
+﻿@model prjCoreFT.Models.SelfFood
+
+@{
+    ViewData["Title"] = "FoodCreate";
+}
+
+<h1>新增資料</h1>
+
+
+<h4>自選飲食</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="FoodCreate" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label class="control-label">產品照片</label>
+                <input type="file" class="form-control" name="photo" />
+            </div>
+            <div class="form-group">
+                <label asp-for="需求人數" class="control-label"></label>
+                <input asp-for="需求人數" class="form-control" />
+                <span asp-validation-for="需求人數" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="需求份數" class="control-label"></label>
+                <input asp-for="需求份數" class="form-control" />
+                <span asp-validation-for="需求份數" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="商品名稱" class="control-label"></label>
+                <input asp-for="商品名稱" class="form-control" />
+                <span asp-validation-for="商品名稱" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="商品內容" class="control-label"></label>
+                <input asp-for="商品內容" class="form-control" />
+                <span asp-validation-for="商品內容" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="單價" class="control-label"></label>
+                <input asp-for="單價" class="form-control" />
+                <span asp-validation-for="單價" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="送出" class="btn btn-primary mt-3" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="SelfFood">返回自選飲食主頁</a>
+</div>
+
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

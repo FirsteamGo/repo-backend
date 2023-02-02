@@ -1,0 +1,157 @@
+﻿@model IEnumerable<prjCoreFT.Models.SetOrder>
+
+
+
+@{
+    ViewData["Title"] = "SetOrder";
+}
+
+<h1>套裝訂單</h1>
+<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">首頁</a></li>
+            <li class="breadcrumb-item active">行程管理:套裝</li>
+            <li class="breadcrumb-item active">套裝訂單</li>
+        </ol>
+    </nav>
+</div>
+@using (Html.BeginForm())
+{
+    <p>
+        關鍵字
+        @Html.TextBox("txtKeyword")
+        <input type="submit" value="查詢" class="btn btn-secondary" />
+    </p>
+}
+
+
+<p>
+    <a asp-action="SetOrderCreate">新增套裝訂單</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                序
+            </th>
+            <th>
+               @* @Html.DisplayNameFor(model => model.套裝行程id)*@
+               套裝方案
+            </th>
+            <th>
+                @* @Html.DisplayNameFor(model => model.套裝行程id)*@
+                套裝細項
+            </th>
+            <th>
+                @* @Html.DisplayNameFor(model => model.套裝行程id)*@
+                餐點細項
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.會員id)*@
+                會員姓名
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.套裝訂單編號)*@
+                套裝訂單編號
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.入住時間)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.退住時間)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.預計人數)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.合計總價)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.評論)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.評分)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.建立人)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.建立時間)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.修改人)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.修改時間)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = 0;
+            foreach (var item in Model) {
+                count++;
+            <tr>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.套裝訂單id)*@
+                    @count
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.套裝行程.套裝方案)
+                    @*套裝方案*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.套裝行程.套裝細項)
+                    @*套裝細項*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.套裝行程.餐廳.餐點細項)
+                    @*餐點細項*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.會員.姓名)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.套裝訂單編號)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.入住時間)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.退住時間)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.預計人數)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.合計總價)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.評論)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.評分)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.建立人)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.建立時間)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.修改人)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.修改時間)
+                </td>*@
+                <td>
+                        @Html.ActionLink("修改", "SetOrderEdit", new { id = item.套裝訂單id} , new { @class="btn btn-success" }) |
+                        @Html.ActionLink("刪除", "SetOrderDelete", new {id = item.套裝訂單id }, new{onclick="return confirm('確定要刪除嗎?')",@class="btn btn-danger"})
+                </td>
+            </tr>
+}}
+    </tbody>
+</table>

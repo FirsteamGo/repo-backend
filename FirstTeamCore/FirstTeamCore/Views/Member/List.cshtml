@@ -1,0 +1,120 @@
+﻿@model IEnumerable<prjCoreFT.Models.MemberInfo>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+
+@*關鍵字查詢頁面*@
+@using (Html.BeginForm())
+{
+    <p>
+        關鍵字
+        @Html.TextBox("txtKeyword")
+        <input type="submit" value="查詢" />
+    </p>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                序號
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.姓名)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.性別)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.出生日期)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.電話號碼)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.連絡信箱)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.會員帳號)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.會員密碼)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.照片)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.權限)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.建立時間)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.修改時間)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.修改人)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = 0;
+            foreach (var item in Model) {
+                count++;
+        <tr>
+            <td>
+                @count
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.姓名)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.性別)*@
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.出生日期)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.電話號碼)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.連絡信箱)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.會員帳號)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.會員密碼)
+            </td>
+            <td>
+               <img src="~/images/@item.照片" width="50" height="50">
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.權限)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.建立時間)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.修改時間)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.修改人)
+            </td>*@
+            <td>
+                @Html.ActionLink("修改", "Edit", new { id=item.會員id }, new { @Class = "btn btn-success" }) |
+                @Html.ActionLink("刪除", "Delete", "Member",new { id = item.會員id }, new { onclick = "return confirm('確定要刪除嗎?')", Class = "btn btn-danger" })
+            </td>
+        </tr>
+}}
+    </tbody>
+</table>
