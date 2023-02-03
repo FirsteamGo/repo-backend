@@ -68,7 +68,7 @@ namespace prjCoreFT.Models
         {
             SelfOrders = new HashSet<SelfOrder>();
         }
-
+        
         public int 自選飲食id { get; set; }
         public string? 圖片 { get; set; }
         public int? 需求人數 { get; set; }
@@ -113,7 +113,7 @@ namespace prjCoreFT.Models
         
 
         public int 活動id { get; set; }
-       
+        
         public string? 活動方式 { get; set; }
         public string? 活動種類 { get; set; }
         public string? 活動名稱 { get; set; }
@@ -127,4 +127,6 @@ namespace prjCoreFT.Models
         public IFormFile photo { get; set; }
 
     }
+
+    
 }

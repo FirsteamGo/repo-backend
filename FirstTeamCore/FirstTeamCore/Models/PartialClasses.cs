@@ -4,33 +4,37 @@ using System.ComponentModel.DataAnnotations;
 
 namespace prjCoreFT.Models
 {
-    [ModelMetadataTypeAttribute(typeof(MemberInfoMetadata))]
+    [ModelMetadataType(typeof(MemberInfoMetadata))]
     public partial class MemberInfo
     {
     }
 
-    [ModelMetadataTypeAttribute(typeof(CLoginMetadata))]
+    [ModelMetadataType(typeof(CLoginMetadata))]
     public partial class CLogin
     {
     }
 
-    [ModelMetadataTypeAttribute(typeof(SelfOrderMetadata))]
+    [ModelMetadataType(typeof(SelfOrderMetadata))]
     public partial class SelfOrder
     {
     }
 
-    [ModelMetadataTypeAttribute(typeof(SelfFoodMetadata))]
+    [ModelMetadataType(typeof(SelfFoodMetadata))]
     public partial class SelfFood
     {
     }
 
-    [ModelMetadataTypeAttribute(typeof(RentDetailMetadata))]
+    [ModelMetadataType(typeof(RentDetailMetadata))]
     public partial class RentDetail
     {
     }
-    [ModelMetadataTypeAttribute(typeof(ActEditMetadata))]
+
+    [ModelMetadataType(typeof(ActEditMetadata))]
     public partial class ActDetail
     {
     }
+
     
+
+
 }

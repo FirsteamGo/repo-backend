@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wB7fR3ChDv4owB4+igJ4EAX7s7ET3LiVeZqr6dYQkwY=",
+  "Hash": "wvy43UnX4Sbf+IyTm0dbuXQofsAvOIvvAtD4IAEBl0M=",
   "Source": "prjCoreFT",
   "BasePath": "_content/prjCoreFT",
   "Mode": "Default",
@@ -8056,6 +8056,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\a9f230ed-3d53-4936-b027-c74b38d3bbba.jpg"
+    },
+    {
+      "Identity": "C:\\FirstteamNew\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\images\\b541bdd1-449c-42b0-880f-887e92a8d0f7.jpg",
+      "SourceId": "prjCoreFT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\FirstteamNew\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\",
+      "BasePath": "_content/prjCoreFT",
+      "RelativePath": "images/b541bdd1-449c-42b0-880f-887e92a8d0f7.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\b541bdd1-449c-42b0-880f-887e92a8d0f7.jpg"
     },
     {
       "Identity": "C:\\FirstteamNew\\repoFT\\FirstTeamCore\\FirstTeamCore\\wwwroot\\images\\b8d506ce-bf5d-4f71-9443-4728e23f33e9.jpg",
