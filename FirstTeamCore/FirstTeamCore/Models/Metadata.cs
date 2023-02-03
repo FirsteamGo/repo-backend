@@ -4,22 +4,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace prjCoreFT.Models
 {
-    //public class TCustomerMetadata
-    //{
-
-    //    public int FId { get; set; }
-
-    //    [Display(Name = "姓名")]
-    //    public string FName { get; set; }
-
-    //    [Display(Name = "電話")]
-    //    public string FPhone { get; set; }
-
-    //[Display(Name = "電子郵件")]
-    //public string FEmail { get; set; }
-    //    public string FAddress { get; set; }
-    //    public string FPassword { get; set; }
-    //}
     public partial class MemberInfoMetadata
     {
         
@@ -122,5 +106,25 @@ namespace prjCoreFT.Models
         public DateTime? 修改時間 { get; set; }
 
         public virtual ICollection<SelfOrder> SelfOrders { get; set; }
+    }
+
+    public partial class ActEditMetadata
+    {
+        
+
+        public int 活動id { get; set; }
+       
+        public string? 活動方式 { get; set; }
+        public string? 活動種類 { get; set; }
+        public string? 活動名稱 { get; set; }
+        public DateTime? 開始日期 { get; set; }
+        public DateTime? 結束日期 { get; set; }
+        public int? 預計人數 { get; set; }
+        public string? 活動介紹 { get; set; }
+        public int? 門票價格 { get; set; }
+        public string? 活動圖片 { get; set; }
+
+        public IFormFile photo { get; set; }
+
     }
 }

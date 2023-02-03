@@ -28,4 +28,9 @@ namespace prjCoreFT.Models
     public partial class RentDetail
     {
     }
+    [ModelMetadataTypeAttribute(typeof(ActEditMetadata))]
+    public partial class ActDetail
+    {
+    }
+    
 }

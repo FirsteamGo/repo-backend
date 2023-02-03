@@ -13,13 +13,13 @@
         <form asp-action="ActEdit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <input type="hidden" name="活動編號" value="@Model.活動id" />
+                <input type="hidden" name="活動id" value="@Model.活動id" />
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="營區" class="control-label"></label>
                 <input asp-for="營區" class="form-control" />
                 <span asp-validation-for="營區" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="活動方式" class="control-label"></label>
                 <input asp-for="活動方式" class="form-control" />

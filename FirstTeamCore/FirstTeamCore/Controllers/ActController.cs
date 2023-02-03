@@ -1,6 +1,7 @@
 ﻿using prjCoreFT.Models;
 using prjCoreFT.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace prjCoreFT.Controllers
 {
@@ -20,12 +21,12 @@ namespace prjCoreFT.Controllers
             IEnumerable<ActDetail> datas = null;
             
             if (string.IsNullOrEmpty(txtKeyword))
-                datas = from t in db.ActDetails
-                        select t;
+                datas = db.ActDetails.Include(s => s.營區);
             else
-                datas = db.ActDetails.Where(t => t.活動名稱.Contains(txtKeyword));
+                datas = db.ActDetails.Include(s => s.營區).Where(t => t.活動名稱.Contains(txtKeyword));
 
-            return View(datas);
+            return View(datas.ToList());
+            
         }
 
         public IActionResult ActCreate()
@@ -61,10 +62,10 @@ namespace prjCoreFT.Controllers
         }
         [HttpPost]
         //存入資料庫
-        public ActionResult ActEdit(CActViewModel p)  
+        public ActionResult ActEdit(ActEditMetadata p)  
         {
             
-            ActDetail x = db.ActDetails.FirstOrDefault(t => t.活動id == p.活動編號);
+            ActDetail x = db.ActDetails.FirstOrDefault(t => t.活動id == p.活動id);
             if (x != null)
             {
                 if (p.photo != null)
@@ -84,10 +85,7 @@ namespace prjCoreFT.Controllers
                 x.預計人數 = p.預計人數;
                 x.活動介紹 = p.活動介紹;
                 x.門票價格 = p.門票價格;
-                x.建立人 = p.建立人;
-                x.建立時間 = p.建立時間;
-                x.修改人 = p.修改人;
-                x.修改時間 = p.修改時間;
+                
                 db.SaveChangesAsync();
             }
             return RedirectToAction("ActList");

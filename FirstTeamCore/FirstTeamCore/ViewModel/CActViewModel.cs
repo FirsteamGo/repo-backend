@@ -27,6 +27,16 @@ namespace prjCoreFT.ViewModel
             get { return _product.營區id; }
             set { _product.營區id = value; }
         }
+        public string? 地區
+        {
+            get { return _product.營區.地區; }
+            set { _product.營區.地區 = value; }
+        }
+        public string? 縣市
+        {
+            get { return _product.營區.縣市; }
+            set { _product.營區.縣市 = value; }
+        }
 
         public string? 活動方式
         {

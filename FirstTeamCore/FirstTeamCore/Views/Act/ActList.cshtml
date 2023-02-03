@@ -35,7 +35,10 @@
                 序
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.營區)
+                @Html.DisplayNameFor(model => model.營區.地區)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.營區.縣市)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.活動方式)
@@ -88,8 +91,11 @@
                 @count
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.營區)
+                @Html.DisplayFor(modelItem => item.營區.地區)
             </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.營區.縣市)
+                    </td>
             <td>
                 @Html.DisplayFor(modelItem => item.活動方式)
             </td>
@@ -130,7 +136,7 @@
                 @Html.DisplayFor(modelItem => item.修改時間)
             </td>*@
             <td class="d-flex">
-                        @Html.ActionLink("修改", "ActEdit", new {  id=item.活動id },new{@class="btn btn-success"})|
+                @Html.ActionLink("修改", "ActEdit", new {  id=item.活動id },new{@class="btn btn-success"})|
                 @Html.ActionLink("刪除", "Delete","Act", new { id = item.活動id },
                 new { onclick = "return confirm('確定要刪除嗎?')",@class="btn btn-danger" })
             </td>
