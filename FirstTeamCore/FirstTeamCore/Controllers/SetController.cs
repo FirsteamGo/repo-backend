@@ -119,12 +119,30 @@ namespace prjCoreFT.Controllers
         }
         public IActionResult SetOrderCreate()
         {
-            return View();
+            CSetOrderViewModel vm = new CSetOrderViewModel();
+            
+            IEnumerable<SetOrderDetail> sod = db.SetOrderDetails;
+            IEnumerable<MemberInfo> m = db.MemberInfos;
+           
+            vm.套裝行程表單 = sod;
+            vm.會員表單 = m;
+            return View(vm);
         }
         [HttpPost]
-        public IActionResult SetOrderCreate(SetOrder p)
+        public IActionResult SetOrderCreate(InputViewModel.CSetOrderInput a)
         {
 
+            SetOrder p = new SetOrder();
+            //SetOrder p = db.SetOrders;
+            p.套裝行程id = a.套裝行程id;
+            p.會員id = a.會員id;
+            p.套裝訂單編號 = a.套裝訂單編號;
+            p.入住時間 = a.入住時間;
+            p.退住時間 = a.退住時間;
+            p.預計人數 = a.預計人數;
+            p.合計總價 = a.合計總價;
+            p.評分 = a.評分;
+            p.評論 = a.評論;
             db.SetOrders.Add(p);
             db.SaveChanges();
             return RedirectToAction("SetOrder");
@@ -150,27 +168,37 @@ namespace prjCoreFT.Controllers
 
         public IActionResult SetOrderEdit(int? id)
         {
+            SetOrder x = db.SetOrders.Include(s => s.套裝行程).ThenInclude(a => a.餐廳).Include(s => s.會員).FirstOrDefault(t => t.套裝訂單id == id);
+            IEnumerable<SetOrderDetail> s = db.SetOrderDetails;
+            IEnumerable<MemberInfo> m = db.MemberInfos;
             if (id != null)
             {
-
-                SetOrder x = db.SetOrders.FirstOrDefault(t => t.套裝訂單id == id);
                 if (x != null)
-                    return View(x);
-
+                {
+                    CSetOrderViewModel vm = new CSetOrderViewModel();
+                    vm.套裝行程表單 = s;
+                    vm.Product = x;
+                    vm.會員表單 = m;
+                    return View(vm);
+                }
             }
-            return RedirectToAction("SetOrder"); //刪除後回傳給List
+            return RedirectToAction("SetOrder"); 
         }
         [HttpPost]
         //存入資料庫
-        public IActionResult SetOrderEdit(InputViewModel.CSetOrderInput p)  //使用CSelfFoodViewModel
+        public IActionResult SetOrderEdit(InputViewModel.CSetOrderInput p)  
         {
 
             SetOrder x = db.SetOrders.FirstOrDefault(t => t.套裝訂單id == p.套裝訂單id);
             if (x != null)
             {
+                x.套裝行程id = p.套裝行程id;
+                x.會員id = p.會員id;
+                x.套裝訂單編號 = p.套裝訂單編號;
                 x.入住時間 = p.入住時間;
                 x.退住時間 = p.退住時間;
                 x.合計總價 = p.合計總價;
+                x.預計人數 = p.預計人數;
                 x.評論 = p.評論;
                 x.評論 = p.評論;
                 x.評分 = p.評分;

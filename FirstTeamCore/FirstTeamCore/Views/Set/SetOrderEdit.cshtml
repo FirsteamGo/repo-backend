@@ -1,4 +1,4 @@
-﻿@model prjCoreFT.Models.SetOrder
+﻿@model prjCoreFT.ViewModel.CSetOrderViewModel
 
 @{
     ViewData["Title"] = "SetOrderEdit";
@@ -12,38 +12,32 @@
     <div class="col-md-4">
         <form asp-action="SetOrderEdit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="套裝訂單id" class="control-label"></label>
-                <input asp-for="套裝訂單id" class="form-control" />
-                <span asp-validation-for="套裝訂單id" class="text-danger"></span>
-            </div>*@
-            <input type="hidden" name="套裝訂單id" value="@Model.套裝訂單id" />
-           @* <div class="form-group">
-                <label asp-for="套裝行程id" class="control-label"></label>
-                <input asp-for="套裝行程id" class="form-control" />
-                <span asp-validation-for="套裝行程id" class="text-danger"></span>
-            </div>*@
-           @* <div class="form-group">
-                <label>@Html.DisplayForModel(Model.套裝行程.套裝方案)</label>
-                </div>*@
-            
-            @*<div class="form-group">
-                <label asp-for="會員id" class="control-label"></label>
-                <input asp-for="會員id" class="form-control" />
-                <span asp-validation-for="會員id" class="text-danger"></span>
-            </div>*@
-           @* <div class="form-group">
-                <label>@Html.DisplayForModel(Model.會員.姓名)</label>
-            </div>*@
-            
-            @*<div class="form-group">
-                <label asp-for="套裝訂單編號" class="control-label"></label>
-                <input asp-for="套裝訂單編號" class="form-control" />
-                <span asp-validation-for="套裝訂單編號" class="text-danger"></span>
-            </div>*@
-            @*<div class="form-group">
-                <label>@Html.DisplayForModel(Model.套裝訂單編號)</label>
-            </div>*@
+            <input type="hidden" name="套裝訂單id" value="@Model.套裝訂單ID" />
+            <div class="form-group">
+                <input asp-for="套裝訂單編號" class="form-control" hidden />
+                <label class="control-label">訂單編號: @Html.DisplayFor(s=>s.套裝訂單編號)</label>
+            </div>
+            <div class="form-group">
+                <input type="hidden" name="會員id" value="@Model.會員ID" />
+                <label class="control-label">姓名: @Html.DisplayFor(s=>s.會員姓名)</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.套裝行程id" class="control-label" hidden></label>
+                <input asp-for="Product.套裝行程id" class="form-control" id="CustomerGenderInput" hidden />
+                <label class="control-label">套裝方案</label>
+                <select id="CustomerGenderSelected" name="Product.套裝行程id" class="form-select">
+                    <optgroup label="請選擇套裝方案">
+                        <option selected disabled hidden>請選擇套裝方案</option>
+                        @{
+                            foreach (var item in Model.套裝行程表單)
+                            {
+                                <option value=@item.套裝行程id> @item.套裝方案</option>
+                            }
+                        }
+                    </optgroup>
+                </select>
+                <span asp-validation-for="Product.套裝行程id" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="入住時間" class="control-label"></label>
                 <input asp-for="入住時間" class="form-control" />
@@ -106,5 +100,14 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        let CustomerGenderSelected = document.querySelector("#CustomerGenderSelected");
+        let CustomerGenderInput = document.querySelector("#CustomerGenderInput");
+        CustomerGenderSelected.addEventListener("change", function () {
+            CustomerGenderInput.value = CustomerGenderSelected.value;
+        })
+    </script>
 }

@@ -1,4 +1,4 @@
-﻿@model prjCoreFT.Models.SetOrder
+﻿@model prjCoreFT.ViewModel.CSetOrderViewModel
 
 @{
     ViewData["Title"] = "SetOrderCreate";
@@ -19,16 +19,41 @@
             </div>*@
             
             <div class="form-group">
-                <label asp-for="套裝行程id" class="control-label">套裝方案</label>
-                <input asp-for="套裝行程id" class="form-control" />
-                <span asp-validation-for="套裝行程id" class="text-danger"></span>
+                <label asp-for="Product.套裝行程id" class="control-label" hidden></label>
+                <input asp-for="Product.套裝行程id" class="form-control" id="CustomerOrderInput" hidden />
+                <label class="control-label">套裝方案</label>
+                <select id="CustomerOrderSelected" name="Product.套裝行程id" class="form-select">
+                    <optgroup label="請選擇套裝方案">
+                        <option selected disabled hidden>請選擇套裝方案</option>
+                        @{
+                            foreach (var item in Model.套裝行程表單)
+                            {
+                                <option value=@item.套裝行程id> @item.套裝方案</option>
+                            }
+                        }
+                    </optgroup>
+                </select>
+                <span asp-validation-for="Product.套裝行程id" class="text-danger"></span>
             </div>
-            
+
+
             
             <div class="form-group">
-                <label asp-for="會員id" class="control-label">姓名</label>
-                <input asp-for="會員id" class="form-control" />
-                <span asp-validation-for="會員id" class="text-danger"></span>
+                <label asp-for="Product.會員id" class="control-label" hidden></label>
+                <input asp-for="Product.會員id" class="form-control" id="CustomerMemberInput" hidden />
+                <label class="control-label">會員</label>
+                <select id="CustomerMemberSelected" name="Product.會員id" class="form-select">
+                    <optgroup label="請選擇會員">
+                        <option selected disabled hidden>請選擇會員</option>
+                        @{
+                            foreach (var item in Model.會員表單)
+                            {
+                                <option value=@item.會員id> @item.姓名</option>
+                            }
+                        }
+                    </optgroup>
+                </select>
+                <span asp-validation-for="Product.會員id" class="text-danger"></span>
             </div>
 
 
@@ -102,5 +127,22 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>       
+        let CustomerOrderSelected = document.querySelector("#CustomerOrderSelected");
+        let CustomerOrderInput = document.querySelector("#CustomerOrderInput");
+        CustomerOrderSelected.addEventListener("change", function () {
+            CustomerOrderInput.value = CustomerOrderSelected.value;
+        })
+
+    </script>
+    <script>
+        let CustomerMemberSelected = document.querySelector("#CustomerMemberSelected");
+        let CustomerMemberInput = document.querySelector("#CustomerMemberInput");
+        CustomerMemberSelected.addEventListener("change", function () {
+            CustomerMemberInput.value = CustomerMemberSelected.value;
+        })
+    </script>
 }

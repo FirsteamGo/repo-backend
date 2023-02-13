@@ -20,7 +20,7 @@ namespace prjCoreFT.ViewModel
             get { return _product.套裝訂單id; }
             set { _product.套裝訂單id = value; }
         }
-        public int 套裝行程ID
+        public int? 套裝行程ID
         {
             get { return _product.套裝行程id; }
             set { _product.套裝行程id = value; }
@@ -88,7 +88,8 @@ namespace prjCoreFT.ViewModel
             set { _product.評分 = value; }
         }
 
-
+        public IEnumerable<SetOrderDetail>? 套裝行程表單 { get; set; }
+        public IEnumerable<MemberInfo>? 會員表單 { get; set; }
 
     }
 }

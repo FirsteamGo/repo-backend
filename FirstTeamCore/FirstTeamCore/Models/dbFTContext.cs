@@ -361,7 +361,7 @@ namespace prjCoreFT.Models
                 entity.HasOne(d => d.套裝行程)
                     .WithMany(p => p.SetOrders)
                     .HasForeignKey(d => d.套裝行程id)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    
                     .HasConstraintName("FK_set訂單_set行程");
 
                 entity.HasOne(d => d.會員)
