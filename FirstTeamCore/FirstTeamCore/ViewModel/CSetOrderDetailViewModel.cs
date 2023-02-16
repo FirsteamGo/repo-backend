@@ -71,5 +71,9 @@ namespace prjCoreFT.ViewModel
             get { return _product.套裝行程價格; }
             set { _product.套裝行程價格 = value; }
         }
+        public IEnumerable<Camp>? 營區表單 {get; set;}
+        public IEnumerable<CampDetail>? 營區細節表單 { get; set;}
+        public IEnumerable<SetFood>? 套裝餐廳表單 { get; set;}
+        
     }
 }

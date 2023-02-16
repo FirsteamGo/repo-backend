@@ -136,7 +136,7 @@ namespace prjCoreFT.Controllers
             //SetOrder p = db.SetOrders;
             p.套裝行程id = a.套裝行程id;
             p.會員id = a.會員id;
-            p.套裝訂單編號 = a.套裝訂單編號;
+            
             p.入住時間 = a.入住時間;
             p.退住時間 = a.退住時間;
             p.預計人數 = a.預計人數;
@@ -194,7 +194,7 @@ namespace prjCoreFT.Controllers
             {
                 x.套裝行程id = p.套裝行程id;
                 x.會員id = p.會員id;
-                x.套裝訂單編號 = p.套裝訂單編號;
+                
                 x.入住時間 = p.入住時間;
                 x.退住時間 = p.退住時間;
                 x.合計總價 = p.合計總價;
@@ -229,14 +229,29 @@ namespace prjCoreFT.Controllers
         }
         public IActionResult SetOrderDetailCreate()
         {
-            return View();
+            CSetOrderDetailViewModel vm = new CSetOrderDetailViewModel();
+            IEnumerable<Camp> camp = db.Camps;
+            IEnumerable<CampDetail> campDetails = db.CampDetails;
+            IEnumerable<SetFood> setFoods = db.SetFoods;
+           
+            vm.營區表單 = camp;
+            vm.營區細節表單 = campDetails;
+            vm.套裝餐廳表單 = setFoods;
+            
+            return View(vm);
         }
         [HttpPost]
 
-        public IActionResult SetOrderDetailCreate(SetOrderDetail p)
+        public IActionResult SetOrderDetailCreate(InputViewModel.CSetOrderDetailInput p)
         {
-
-            db.SetOrderDetails.Add(p);
+            SetOrderDetail x = new SetOrderDetail();
+            x.餐廳id = p.餐廳ID;
+            x.營地id = p.營地ID;
+            x.營區細項id = p.營區細項ID;
+            x.套裝行程價格 = p.套裝行程價格;
+            x.套裝方案 = p.套裝方案;
+            x.套裝細項 = p.套裝細項;
+            db.SetOrderDetails.Add(x);
             db.SaveChanges();
             return RedirectToAction("SetDetail");
         }

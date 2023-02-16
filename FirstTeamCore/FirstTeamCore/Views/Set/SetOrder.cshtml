@@ -95,8 +95,7 @@
                 count++;
             <tr>
                 <td>
-                    @*@Html.DisplayFor(modelItem => item.套裝訂單id)*@
-                    @count
+                    @count             
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.套裝行程.套裝方案)
@@ -115,7 +114,7 @@
                 </td>
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.套裝訂單編號)
+                    訂單編號 @Html.DisplayFor(modelItem =>item.套裝訂單id)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.入住時間)

@@ -30,11 +30,7 @@ namespace prjCoreFT.InputViewModel
             get { return _product.會員id; }
             set { _product.會員id = value; }
         }
-        public string? 套裝訂單編號
-        {
-            get { return _product.套裝訂單編號; }
-            set { _product.套裝訂單編號 = value; }
-        }
+        
         public DateTime? 入住時間
         {
             get { return _product.入住時間; }

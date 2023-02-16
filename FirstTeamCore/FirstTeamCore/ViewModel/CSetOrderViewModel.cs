@@ -50,11 +50,11 @@ namespace prjCoreFT.ViewModel
             get { return _product.會員.姓名; }
             set { _product.會員.姓名 = value; }
         }
-        public string? 套裝訂單編號
-        {
-            get { return _product.套裝訂單編號; }
-            set { _product.套裝訂單編號 = value; }
-        }
+        //public string? 套裝訂單編號
+        //{
+        //    get { return _product.套裝訂單編號; }
+        //    set { _product.套裝訂單編號 = value; }
+        //}
 
         public DateTime? 入住時間
         {
