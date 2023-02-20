@@ -25,15 +25,12 @@ namespace prjCoreFT.InputViewModel
         {
             get { return _product.營地id; }
             set { _product.營地id = value; }
-        }
-       
-        public int? 營區細項ID
+        }       
+        public int? 活動ID
         {
-            get { return _product.營區細項id; }
-            set { _product.營區細項id = value; }
+            get { return _product.營區細項.活動id; }
+            set { _product.營區細項.活動id = value; }
         }
-        
-        
         public int? 餐廳ID
         {
             get { return _product.餐廳id; }

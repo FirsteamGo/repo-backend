@@ -30,31 +30,32 @@
                         @{
                             foreach (var item in Model.營區表單)
                             {
-                                <option value=@item.營區id> @item.營區名稱</option>
+                                        <option value=@item.營區id> @item.營區名稱</option>
                             }
                         }
                     </optgroup>
                 </select>
                 <span asp-validation-for="Product.營地id" class="text-danger"></span>
             </div>
-
+           
             <div class="form-group">
-                <label asp-for="Product.營區細項id" class="control-label" hidden></label>
-                <input asp-for="Product.營區細項id" class="form-control" id="CampDetailInput" hidden />
-                <label class="control-label">營區細項</label>
-                <select id="CampDetailSelected" name="Product.營區細項id" class="form-select">
-                    <optgroup label="請選擇營區細項">
-                        <option selected disabled hidden>請選擇營區細項</option>
+                <label asp-for="Product.營區細項.活動id" class="control-label" hidden></label>
+                <input asp-for="Product.營區細項.活動id" class="form-control" id="CampDetailInput" hidden />
+                <label class="control-label">活動項目</label>
+                <select id="CampDetailSelected" class="form-select">
+                    <optgroup label="請選擇活動">
+                        <option selected disabled hidden>請選擇活動</option>
                         @{
-                            foreach (var item in Model.營區細節表單)
+                            foreach (var item in Model.活動表單)
                             {
-                                <option value=@item.營區細項id> @item.詳細內容</option>
+                                    <option  value=@item.活動id> @item.活動名稱</option>
                             }
                         }
                     </optgroup>
-                </select>
-                <span asp-validation-for="Product.營區細項id" class="text-danger"></span>
+                </select> 
+                <span asp-validation-for="Product.營區細項.活動id" class="text-danger"></span>
             </div>
+            
 
             <div class="form-group">
                 <label asp-for="Product.餐廳id" class="control-label" hidden></label>
@@ -66,7 +67,7 @@
                         @{
                             foreach (var item in Model.套裝餐廳表單)
                             {
-                                <option value=@item.餐廳id> @item.餐廳名</option>
+                                        <option value=@item.餐廳id> @item.餐廳名</option>
                             }
                         }
                     </optgroup>
@@ -165,5 +166,5 @@
         FoodSelected.addEventListener("change", function () {
             FoodInput.value = FoodSelected.value;
         })
-    </script>
+    </script>    
 }

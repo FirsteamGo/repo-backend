@@ -2,6 +2,7 @@
 using prjCoreFT.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace prjCoreFT.Controllers
 {
@@ -233,7 +234,8 @@ namespace prjCoreFT.Controllers
             IEnumerable<Camp> camp = db.Camps;
             IEnumerable<CampDetail> campDetails = db.CampDetails;
             IEnumerable<SetFood> setFoods = db.SetFoods;
-           
+            IEnumerable<ActDetail> actDetails = db.ActDetails; //
+            vm.活動表單 = actDetails;   //
             vm.營區表單 = camp;
             vm.營區細節表單 = campDetails;
             vm.套裝餐廳表單 = setFoods;
@@ -244,10 +246,12 @@ namespace prjCoreFT.Controllers
 
         public IActionResult SetOrderDetailCreate(InputViewModel.CSetOrderDetailInput p)
         {
+            CampDetail z = db.CampDetails.FirstOrDefault(s=>s.活動id==p.活動ID);
+            
             SetOrderDetail x = new SetOrderDetail();
             x.餐廳id = p.餐廳ID;
             x.營地id = p.營地ID;
-            x.營區細項id = p.營區細項ID;
+            x.營區細項id = z.營區細項id;
             x.套裝行程價格 = p.套裝行程價格;
             x.套裝方案 = p.套裝方案;
             x.套裝細項 = p.套裝細項;

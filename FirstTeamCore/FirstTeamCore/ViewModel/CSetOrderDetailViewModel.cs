@@ -44,7 +44,7 @@ namespace prjCoreFT.ViewModel
         {
             get { return _product.營區細項.活動.活動名稱; }
             set { _product.營區細項.活動.活動名稱 = value; }
-        }
+        }        
         public int? 餐廳ID
         {
             get { return _product.餐廳id; }
@@ -74,6 +74,6 @@ namespace prjCoreFT.ViewModel
         public IEnumerable<Camp>? 營區表單 {get; set;}
         public IEnumerable<CampDetail>? 營區細節表單 { get; set;}
         public IEnumerable<SetFood>? 套裝餐廳表單 { get; set;}
-        
+        public IEnumerable<ActDetail>? 活動表單 {get; set;}   //
     }
 }
