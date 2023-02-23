@@ -34,11 +34,18 @@ namespace prjCoreFT.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        //public IActionResult Login()
+        //{
+        //    return View();
+        //}
         public IActionResult Login()
         {
+            if (CGlobalParameters.Login)
+            {
+                return RedirectToAction("Index");
+            }
             return View();
         }
-
         [HttpPost]
 
         public IActionResult Login(CLogin Login)
@@ -49,9 +56,19 @@ namespace prjCoreFT.Controllers
             {
                 string json = JsonSerializer.Serialize(user);
                 HttpContext.Session.SetString(CDictionary.SK_LOINGED_USER, json);
+                CGlobalParameters.Login = true;
+                CGlobalParameters.LoginName = "管理員: " + Login.txtAccount;
                 return RedirectToAction("Index");
             }
             return View();
+        }
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove(CDictionary.SK_LOINGED_USER);
+            CGlobalParameters.Login = false;
+            CGlobalParameters.LoginName = "未登入";
+            return RedirectToAction("Login");
         }
     }
 }
