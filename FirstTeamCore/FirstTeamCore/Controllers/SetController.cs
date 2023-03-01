@@ -280,12 +280,22 @@ namespace prjCoreFT.Controllers
 
         public IActionResult SetOrderDetailEdit(int? id)
         {
+            CSetOrderDetailViewModel vm = new CSetOrderDetailViewModel(); 
             if (id != null)
             {
-
                 SetOrderDetail x = db.SetOrderDetails.FirstOrDefault(t => t.套裝行程id == id);
+                IEnumerable<Camp> camp = db.Camps;
+                IEnumerable<CampDetail> campDetails = db.CampDetails;
+                IEnumerable<SetFood> setFoods = db.SetFoods;
+                IEnumerable<ActDetail> actDetails = db.ActDetails; //
+                vm.活動表單 = actDetails;   //
+                vm.營區表單 = camp;
+                vm.營區細節表單 = campDetails;
+                vm.套裝餐廳表單 = setFoods;
+                vm.Product = x;
+                
                 if (x != null)
-                    return View(x);
+                    return View(vm);
 
             }
             return RedirectToAction("SetDetail"); //刪除後回傳給List
@@ -294,11 +304,14 @@ namespace prjCoreFT.Controllers
         //存入資料庫
         public IActionResult SetOrderDetailEdit(InputViewModel.CSetOrderDetailInput p)
         {
-
+            
             SetOrderDetail x = db.SetOrderDetails.FirstOrDefault(t => t.套裝行程id == p.套裝行程ID);
             if (x != null)
             {
-
+                CampDetail z = db.CampDetails.FirstOrDefault(t => t.活動id == p.活動ID);
+                x.營地id = p.營地ID;
+                x.營區細項id = z.營區細項id;
+                x.餐廳id = p.餐廳ID;
                 x.套裝方案 = p.套裝方案;
                 x.套裝細項 = p.套裝細項;
                 x.套裝行程價格 = p.套裝行程價格;
