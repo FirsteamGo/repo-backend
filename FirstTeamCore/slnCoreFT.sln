@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "prjCoreFT", "FirstTeamCore\prjCoreFT.csproj", "{14CE305D-A7D0-47FE-9095-525D38A459EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIprjCroeFT", "APIprjCroeFT\APIprjCroeFT.csproj", "{9DFC239A-62A0-4DA0-AB24-EBC19A4AA505}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{14CE305D-A7D0-47FE-9095-525D38A459EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14CE305D-A7D0-47FE-9095-525D38A459EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14CE305D-A7D0-47FE-9095-525D38A459EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DFC239A-62A0-4DA0-AB24-EBC19A4AA505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DFC239A-62A0-4DA0-AB24-EBC19A4AA505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DFC239A-62A0-4DA0-AB24-EBC19A4AA505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DFC239A-62A0-4DA0-AB24-EBC19A4AA505}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
