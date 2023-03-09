@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APIprjCroeFT.Controllers
 {
+    [EnableCors("AllowAny")]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
