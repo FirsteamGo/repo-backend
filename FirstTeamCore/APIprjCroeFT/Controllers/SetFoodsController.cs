@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using APIprjCroeFT.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace APIprjCroeFT.Controllers
 {
+    [EnableCors("AllowAny")]
     [Route("api/[controller]")]
     [ApiController]
     public class SetFoodsController : ControllerBase
