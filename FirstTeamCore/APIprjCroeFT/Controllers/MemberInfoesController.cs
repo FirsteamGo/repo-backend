@@ -6,9 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using APIprjCroeFT.Models;
+using Microsoft.AspNetCore.Cors;
+using System.Text.Json;
+using APIprjCroeFT.DTO;
 
 namespace APIprjCroeFT.Controllers
 {
+    [EnableCors("AllowAny")] // 全域 (using Microsoft.AspNetCore.Cors;)
     [Route("api/[controller]")]
     [ApiController]
     public class MemberInfoesController : ControllerBase
@@ -20,6 +24,8 @@ namespace APIprjCroeFT.Controllers
             _context = context;
         }
 
+
+
         // GET: api/MemberInfoes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberInfo>>> GetMemberInfo()
@@ -27,7 +33,7 @@ namespace APIprjCroeFT.Controllers
             return await _context.MemberInfo.ToListAsync();
         }
 
-        // GET: api/MemberInfoes/5
+        // GET: api/MemberInfoes/5/用 id 撈資料
         [HttpGet("{id}")]
         public async Task<ActionResult<MemberInfo>> GetMemberInfo(int id)
         {
@@ -72,16 +78,55 @@ namespace APIprjCroeFT.Controllers
             return NoContent();
         }
 
+
+
+
+        // 登入頁面使用
         // POST: api/MemberInfoes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<MemberInfo>> PostMemberInfo(MemberInfo memberInfo)
+        public async Task<string> PostMemberInfo(MemberInfoDTO AA)
         {
-            _context.MemberInfo.Add(memberInfo);
-            await _context.SaveChangesAsync();
+            MemberInfo user = (_context.MemberInfo.FirstOrDefault(t => t.會員帳號.Equals(AA.account) && t.會員密碼.Equals(AA.password)));
 
-            return CreatedAtAction("GetMemberInfo", new { id = memberInfo.會員id }, memberInfo);
+            if (user != null && user.會員密碼.Equals(AA.password))
+            {
+                var result = new
+                {
+                    user.會員id,
+                    user.姓名,
+                    user.性別,
+                    user.出生日期,
+                    user.電話號碼,
+                    user.連絡信箱,
+                    user.會員帳號,
+                    user.會員密碼,
+                    user.照片,
+                    user.權限,
+                    user.建立時間,
+                    user.修改時間,
+                    user.修改人,
+
+
+                };
+
+                string json = JsonSerializer.Serialize(result);
+
+                return json;
+            }
+            return "帳號或密碼錯誤";
+
+
+
+
         }
+
+
+
+
+
+
+
 
         // DELETE: api/MemberInfoes/5
         [HttpDelete("{id}")]
