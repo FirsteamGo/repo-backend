@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using APIprjCroeFT.Models;
 using Microsoft.AspNetCore.Cors;
+using APIprjCroeFT.DTO;
 
 namespace APIprjCroeFT.Controllers
 {
@@ -24,9 +25,19 @@ namespace APIprjCroeFT.Controllers
 
         // GET: api/ActDetails
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ActDetail>>> GetActDetail()
+        public async Task<ActionResult<IEnumerable<ActDTO>>> GetActDetail()
         {
-            return await _context.ActDetail.ToListAsync();
+            return await _context.ActDetail.Include(a => a.營區).Select(ad => new ActDTO
+            {
+                活動id = ad.活動id,
+                地區 = ad.營區.地區,
+                縣市 = ad.營區.縣市,
+                活動介紹 = ad.活動介紹,
+                活動名稱 = ad.活動名稱,
+                活動圖片 = ad.活動圖片,
+                活動種類 = ad.活動種類,
+                門票價格 = ad.門票價格,
+            }).ToListAsync();
         }
 
         // GET: api/ActDetails/5

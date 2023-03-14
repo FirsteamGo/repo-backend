@@ -170,9 +170,9 @@ namespace prjCoreFT.Controllers
                 }
 
 
-                x.營區id = p.營區編號;
-                x.活動id = p.活動編號;
-                x.露營形式id = p.項目id;
+                x.營區id = p.營區id;
+                x.活動id = p.活動id;
+                x.露營形式id = p.露營形式id;
                 x.詳細內容 = p.詳細內容;
                 x.單價 = p.單價;
                 x.建立人 = p.建立人;
