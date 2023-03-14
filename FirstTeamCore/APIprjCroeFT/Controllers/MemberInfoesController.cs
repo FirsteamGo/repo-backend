@@ -122,7 +122,27 @@ namespace APIprjCroeFT.Controllers
 
         }
 
+        // 註冊用 post
+        [HttpPost("SignUp")]
+        public async Task<string> PostMemberInfo(SignupDTO AA)
+        {
+            MemberInfo mem = new MemberInfo
+            {
+                性別 = AA.性別,
+                姓名 = AA.姓名,
+                會員帳號 = AA.會員帳號,
+                會員密碼 = AA.會員密碼,
+                電話號碼 = AA.電話號碼,
+                出生日期 = AA.出生日期,
+                連絡信箱 = AA.連絡信箱,
 
+            };
+
+            _context.MemberInfo.Add(mem);
+            await _context.SaveChangesAsync();
+
+            return "註冊成功";
+        }
 
 
 
