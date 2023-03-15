@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using APIprjCroeFT.Models;
 using Microsoft.AspNetCore.Cors;
+using APIprjCroeFT.DTO;
 
 namespace APIprjCroeFT.Controllers
 {
@@ -24,9 +25,12 @@ namespace APIprjCroeFT.Controllers
 
         // GET: api/SetOrderDetails
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SetOrderDetail>>> GetSetOrderDetail()
+        public async Task<ActionResult<IEnumerable<SetOrderDetailDTO>>> GetSetOrderDetail()
         {
-            return await _context.SetOrderDetail.ToListAsync();
+            return await _context.SetOrderDetail.Include(a=>a.餐廳).Include(b=>b.營區細項).ThenInclude(s=>s.活動).Include(f => f.營區細項).ThenInclude(t=>t.露營形式).Include(g=>g.營區細項).ThenInclude(h=>h.營區).Select(set=> new SetOrderDetailDTO
+            {
+                套裝行程id=set.套裝行程id, 套裝方案=set.套裝方案, 套裝細項=set.套裝細項, 套裝行程價格 = set.套裝行程價格, 營區名稱=set.營區細項.營區.營區名稱, 地區 = set.營區細項.營區.地區, 縣市 = set.營區細項.營區.縣市, 活動圖片 = set.營區細項.活動.活動圖片, 活動名稱 = set.營區細項.活動.活動名稱, 項目內容= set.營區細項.露營形式.項目內容
+            }).ToListAsync();
         }
 
         // GET: api/SetOrderDetails/5
@@ -105,5 +109,6 @@ namespace APIprjCroeFT.Controllers
         {
             return _context.SetOrderDetail.Any(e => e.套裝行程id == id);
         }
+       
     }
 }
