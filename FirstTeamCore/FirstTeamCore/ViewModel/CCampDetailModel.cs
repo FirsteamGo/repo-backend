@@ -22,19 +22,19 @@ namespace prjCoreFT.ViewModel
             set { _product.營區細項id = value; }
         }
 
-        public int? 營區編號
+        public int? 營區id
         {
             get { return _product.營區id; }
             set { _product.營區id = value; }
         }
 
-        public int? 活動編號
+        public int? 活動id
         {
             get { return _product.活動id; }
             set { _product.活動id = value; }
         }
 
-        public int? 項目id
+        public int? 露營形式id
         {
             get { return _product.露營形式id; }
             set { _product.露營形式id = value; }
