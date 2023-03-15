@@ -27,13 +27,16 @@ namespace APIprjCroeFT.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ActDTO>>> GetActDetail()
         {
-            return await _context.ActDetail.Include(s=>s.營區).Select(emp=> new ActDTO{
-                活動id=emp.活動id,
-                地區=emp.營區.地區,
-                縣市=emp.營區.縣市,
-                活動名稱=emp.活動名稱,
-                活動方式=emp.活動方式,
-
+            return await _context.ActDetail.Include(a => a.營區).Select(ad => new ActDTO
+            {
+                活動id = ad.活動id,
+                地區 = ad.營區.地區,
+                縣市 = ad.營區.縣市,
+                活動介紹 = ad.活動介紹,
+                活動名稱 = ad.活動名稱,
+                活動圖片 = ad.活動圖片,
+                活動種類 = ad.活動種類,
+                門票價格 = ad.門票價格,
             }).ToListAsync();
         }
 

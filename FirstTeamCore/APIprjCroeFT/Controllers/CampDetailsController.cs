@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using APIprjCroeFT.Models;
 using Microsoft.AspNetCore.Cors;
+using APIprjCroeFT.DTO;
 
 namespace APIprjCroeFT.Controllers
 {
@@ -24,9 +25,16 @@ namespace APIprjCroeFT.Controllers
 
         // GET: api/CampDetails
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CampDetail>>> GetCampDetail()
+        public async Task<ActionResult<IEnumerable<CampDTO>>> GetCampDetail()
         {
-            return await _context.CampDetail.ToListAsync();
+            return await _context.CampDetail.Include(a => a.活動).Include(b => b.營區).Include(c => c.露營形式).Select(camp => new CampDTO
+            {
+                營區名稱 = camp.營區.營區名稱,
+                營區介紹 = camp.營區.營區介紹,
+                單價 = camp.單價,
+                圖片 =camp.圖片,
+                
+            }).ToListAsync();
         }
 
         // GET: api/CampDetails/5
