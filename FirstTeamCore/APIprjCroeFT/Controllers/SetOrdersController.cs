@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using APIprjCroeFT.Models;
 using Microsoft.AspNetCore.Cors;
+using APIprjCroeFT.DTO;
 
 namespace APIprjCroeFT.Controllers
 {
@@ -77,12 +78,24 @@ namespace APIprjCroeFT.Controllers
         // POST: api/SetOrders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<SetOrder>> PostSetOrder(SetOrder setOrder)
+        public async Task<string> PostSetOrder(SetOrderDTO sd)
         {
-            _context.SetOrder.Add(setOrder);
+            SetOrder SetOD = new SetOrder { 
+             套裝訂單id = sd.套裝訂單id,
+             套裝行程id = sd.套裝行程id,
+             會員id = sd.會員id,
+             套裝訂單編號 = sd.套裝訂單編號,
+             入住時間 = sd.入住時間,
+             退住時間 = sd.退住時間,
+             預計人數 = sd.預計人數,
+             合計總價 = sd.合計總價,
+             評論 = sd.評論,
+             評分 = sd.評分,
+                };
+            _context.SetOrder.Add(SetOD);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSetOrder", new { id = setOrder.套裝訂單id }, setOrder);
+            return "註冊成功";
         }
 
         // DELETE: api/SetOrders/5
