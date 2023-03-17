@@ -17,7 +17,7 @@ namespace APIprjCroeFT.DTO
         public string 縣市 { get; set; }
         public string 營區介紹 { get; set; }
         public string 項目內容 { get; set; }
-
+        public int? 容納人數 { get; set; }
         public virtual IEnumerable<ActDetail> 活動 { get; set; }
         public virtual IEnumerable<Camp> 營區 { get; set; }
         public virtual IEnumerable<CampStyle> 露營形式 { get; set; }

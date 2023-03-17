@@ -29,8 +29,15 @@ namespace APIprjCroeFT.Controllers
         {
             return await _context.CampDetail.Include(a => a.活動).Include(b => b.營區).Include(c => c.露營形式).Select(camp => new CampDTO
             {
+                營區細項id = camp.營區細項id,
                 營區名稱 = camp.營區.營區名稱,
                 營區介紹 = camp.營區.營區介紹,
+                營區地址 = camp.營區.營區地址,
+                地區 = camp.營區.地區,
+                縣市 = camp.營區.縣市,
+                容納人數 = camp.營區.容納人數,
+                詳細內容 = camp.詳細內容,
+                項目內容 = camp.露營形式.項目內容,
                 單價 = camp.單價,
                 圖片 =camp.圖片,
                 
