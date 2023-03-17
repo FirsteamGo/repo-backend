@@ -1,4 +1,4 @@
-﻿@model prjCoreFT.Models.SetOrderDetail
+﻿@model prjCoreFT.ViewModel.CSetOrderDetailViewModel
 
 @{
     ViewData["Title"] = "SetOrderDetailEdit";
@@ -17,7 +17,61 @@
                 <input asp-for="套裝行程id" class="form-control" />
                 <span asp-validation-for="套裝行程id" class="text-danger"></span>
             </div>*@
-            <input type="hidden" name="套裝行程id" value="@Model.套裝行程id" />
+            <input type="hidden" name="套裝行程id" value="@Model.套裝行程ID" />
+            <div class="form-group">
+                <label asp-for="Product.營地id" class="control-label" hidden></label>
+                <input asp-for="Product.營地id" class="form-control" id="CampInput" hidden />
+                <label class="control-label">營地</label>
+                <select id="CampSelected" name="Product.營地id" class="form-select">
+                    <optgroup label="請選擇營地">
+                        <option selected disabled hidden>請選擇營地</option>
+                        @{
+                            foreach (var item in Model.營區表單)
+                            {
+                                <option value=@item.營區id> @item.營區名稱</option>
+                            }
+                        }
+                    </optgroup>
+                </select>
+                <span asp-validation-for="Product.營地id" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Product.營區細項.活動id" class="control-label" hidden></label>
+                <input asp-for="Product.營區細項.活動id" class="form-control" id="CampDetailInput" hidden />
+                <label class="control-label">活動項目</label>
+                <select id="CampDetailSelected" class="form-select">
+                    <optgroup label="請選擇活動">
+                        <option selected disabled hidden>請選擇活動</option>
+                        @{
+                            foreach (var item in Model.活動表單)
+                            {
+                                <option value=@item.活動id> @item.活動名稱</option>
+                            }
+                        }
+                    </optgroup>
+                </select>
+                <span asp-validation-for="Product.營區細項.活動id" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Product.餐廳id" class="control-label" hidden></label>
+                <input asp-for="Product.餐廳id" class="form-control" id="FoodInput" hidden />
+                <label class="control-label">餐廳</label>
+                <select id="FoodSelected" name="Product.餐廳id" class="form-select">
+                    <optgroup label="請選擇套裝餐廳">
+                        <option selected disabled hidden>請選擇套裝餐廳</option>
+                        @{
+                            foreach (var item in Model.套裝餐廳表單)
+                            {
+                                <option value=@item.餐廳id> @item.餐廳名</option>
+                            }
+                        }
+                    </optgroup>
+                </select>
+                <span asp-validation-for="Product.餐廳id" class="text-danger"></span>
+            </div>
 
             @*<div class="form-group">
                 <label asp-for="營地id" class="control-label"></label>
@@ -90,5 +144,29 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        let CampSelected = document.querySelector("#CampSelected");
+        let CampInput = document.querySelector("#CampInput");
+        CampSelected.addEventListener("change", function () {
+            CampInput.value = CampSelected.value;
+        })
+
+    </script>
+    <script>
+        let CampDetailSelected = document.querySelector("#CampDetailSelected");
+        let CampDetailInput = document.querySelector("#CampDetailInput");
+        CampDetailSelected.addEventListener("change", function () {
+            CampDetailInput.value = CampDetailSelected.value;
+        })
+    </script>
+    <script>
+        let FoodSelected = document.querySelector("#FoodSelected");
+        let FoodInput = document.querySelector("#FoodInput");
+        FoodSelected.addEventListener("change", function () {
+            FoodInput.value = FoodSelected.value;
+        })
+    </script>
 }
