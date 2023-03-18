@@ -6,6 +6,8 @@ namespace APIprjCroeFT.DTO
     {
         public int 活動id { get; set; }
         public int? 營區id { get; set; }
+        public string 營區名稱 { get; set; }
+
         public string 活動方式 { get; set; }
         public string 活動種類 { get; set; }
         public string 活動名稱 { get; set; }
