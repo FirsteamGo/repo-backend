@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using APIprjCroeFT.Models;
 using Microsoft.AspNetCore.Cors;
 using APIprjCroeFT.DTO;
+using Microsoft.Extensions.Hosting;
 
 namespace APIprjCroeFT.Controllers
 {
@@ -118,5 +119,21 @@ namespace APIprjCroeFT.Controllers
         {
             return _context.SetOrder.Any(e => e.套裝訂單id == id);
         }
+
+        //[HttpPost("api/upload")]
+        //public async Task<IActionResult> Upload()
+        //{
+        //    var file = Request.Form.Files[0];
+        //    var fileName = Guid.NewGuid().ToString() + ".jpg";
+        //    var filePath = Path.Combine("D:/期末專案/repo-backend/FirstTeamCore/FirstTeamCore/wwwroot/images", fileName);
+
+        //    using (var stream = new FileStream(filePath, FileMode.Create))
+        //    {
+        //        await file.CopyToAsync(stream);
+        //    }
+
+        //    return Ok(new { filePath });
+        //}
+
     }
 }
