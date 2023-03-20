@@ -30,6 +30,8 @@ namespace APIprjCroeFT.Controllers
             return await _context.CampDetail.Include(a => a.活動).Include(b => b.營區).Include(c => c.露營形式).Select(camp => new CampDTO
             {
                 營區細項id = camp.營區細項id,
+                營區id = camp.營區.營區id,
+                露營形式id = camp.露營形式.露營形式id,
                 營區名稱 = camp.營區.營區名稱,
                 營區介紹 = camp.營區.營區介紹,
                 營區地址 = camp.營區.營區地址,
@@ -40,7 +42,16 @@ namespace APIprjCroeFT.Controllers
                 項目內容 = camp.露營形式.項目內容,
                 單價 = camp.單價,
                 圖片 =camp.圖片,
-                
+
+                活動id = camp.活動.活動id,
+                活動方式 = camp.活動.活動方式,
+                活動種類 = camp.活動.活動種類,
+                活動名稱 = camp.活動.活動名稱,
+                預計人數 = camp.活動.預計人數,
+                活動介紹 = camp.活動.活動介紹,
+                門票價格 = camp.活動.門票價格,
+                活動圖片 = camp.活動.活動圖片,
+
             }).ToListAsync();
         }
 

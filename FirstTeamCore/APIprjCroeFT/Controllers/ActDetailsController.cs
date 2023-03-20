@@ -30,16 +30,20 @@ namespace APIprjCroeFT.Controllers
             return await _context.ActDetail.Include(a => a.營區).Select(ad => new ActDTO
             {
                 活動id = ad.活動id,
-                營區id= ad.營區id,
-                地區 = ad.營區.地區,
-                縣市 = ad.營區.縣市,
-                營區名稱 = ad.營區.營區名稱,
                 活動方式 = ad.活動方式,
                 活動種類=ad.活動種類,
                 活動名稱 = ad.活動名稱,
                 活動介紹 = ad.活動介紹,
                 活動圖片 = ad.活動圖片,
                 門票價格 = ad.門票價格,
+
+                營區id = ad.營區id,
+                地區 = ad.營區.地區,
+                縣市 = ad.營區.縣市,
+                營區名稱 = ad.營區.營區名稱,
+                營區地址 = ad.營區.營區地址,
+                營區介紹 = ad.營區.營區介紹,
+                容納人數 = ad.營區.容納人數,
             }).ToListAsync();
         }
 
