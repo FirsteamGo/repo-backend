@@ -96,7 +96,7 @@ namespace APIprjCroeFT.Controllers
             _context.SetOrder.Add(SetOD);
             await _context.SaveChangesAsync();
 
-            return "註冊成功";
+            return "送出套裝訂單成功";
         }
 
         // DELETE: api/SetOrders/5
