@@ -90,6 +90,7 @@ namespace prjCoreFT.Controllers
             {               
                 x.餐廳名 = p.餐廳名;
                 x.餐廳電話 = p.餐廳電話;
+                x.地址 = p.地址;
                 x.餐點細項 = p.餐點細項;
                 db.SaveChangesAsync();
             }
