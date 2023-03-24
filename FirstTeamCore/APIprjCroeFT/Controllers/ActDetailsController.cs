@@ -103,6 +103,15 @@ namespace APIprjCroeFT.Controllers
             return CreatedAtAction("GetActDetail", new { id = actDetail.活動id }, actDetail);
         }
 
+        //[HttpPost("Filter")]
+        //public async Task<ActionResult<IEnumerable<ActDTO>>> ActDetailFilter(ActDTO actDTO)
+        //{
+        //    _context.ActDetail.Add(actDetail);
+        //    await _context.SaveChangesAsync();
+
+        //    return CreatedAtAction("GetActDetail", new { id = actDetail.活動id }, actDetail);
+        //}
+
         // DELETE: api/ActDetails/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteActDetail(int id)
