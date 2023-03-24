@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using APIprjCroeFT.Models;
 using Microsoft.AspNetCore.Cors;
+using APIprjCroeFT.DTO;
 
 namespace APIprjCroeFT.Controllers
 {
@@ -24,9 +25,23 @@ namespace APIprjCroeFT.Controllers
 
         // GET: api/SelfOrders
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SelfOrder>>> GetSelfOrder()
+        public async Task<ActionResult<IEnumerable<SelfOrderDTO>>> GetSelfOrder()
         {
-            return await _context.SelfOrder.ToListAsync();
+            return await _context.SelfOrder.Include(a => a.租賃商店).Select(set => new SelfOrderDTO
+            {
+                自選訂單id = set.自選訂單id,
+                自選訂單編號 = set.自選訂單編號,
+                租借總價 = set.租借總價,
+                自選訂單總價 = set.自選訂單總價,
+                產品名稱 = set.租賃商店.產品名稱,
+                產品說明=set.租賃商店.產品說明,
+                圖片=set.租賃商店.圖片,
+                單日租金=set.租賃商店.單日租金,
+
+            }) .ToListAsync();
+
+
+
         }
 
         // GET: api/SelfOrders/5
