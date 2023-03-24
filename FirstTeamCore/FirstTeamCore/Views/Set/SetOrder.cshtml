@@ -68,10 +68,12 @@
                 @Html.DisplayNameFor(model => model.合計總價)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.評論)
+                @*@Html.DisplayNameFor(model => model.評論)*@
+                備註
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.評分)
+                @*@Html.DisplayNameFor(model => model.評分)*@
+                期望值
             </th>
             @*<th>
                 @Html.DisplayNameFor(model => model.建立人)
@@ -114,7 +116,7 @@
                 </td>
 
                 <td>
-                    訂單編號 @Html.DisplayFor(modelItem =>item.套裝訂單id)
+                    @Html.DisplayFor(modelItem =>item.套裝訂單編號)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.入住時間)
